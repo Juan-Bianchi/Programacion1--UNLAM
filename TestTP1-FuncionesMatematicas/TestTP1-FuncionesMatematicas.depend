@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1659322715 source:c:\users\juan\desktop\codificaciones-progra1\progra1\testtp1-funcionesmatematicas\main.c
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+	<string.h>
+	<math.h>
+	"../TP1-FuncionesMatematicas/Matematica.h"
+
+1659322346 c:\users\juan\desktop\codificaciones-progra1\progra1\tp1-funcionesmatematicas\matematica.h
+
