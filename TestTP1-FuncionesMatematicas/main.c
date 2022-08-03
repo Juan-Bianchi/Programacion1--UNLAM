@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include<locale.h>
-#include<string.h>
-#include<math.h>
+#include <locale.h>
+#include <string.h>
+#include <math.h>
 #include "../TP1-FuncionesMatematicas/Matematica.h"
 
 double potenciaDouble (const void* elem, const void* pot);

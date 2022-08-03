@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1659486898 source:c:\users\juan\desktop\codificaciones-progra1\progra1\testtp1-tipofecha\main.c
+	<stdio.h>
+	<stdlib.h>
+	"../TP1-TipoFecha/Fecha.h"
+	<string.h>
+	<locale.h>
+
+1659486589 c:\users\juan\desktop\codificaciones-progra1\progra1\tp1-tipofecha\fecha.h
+	<stdio.h>
+	<stdlib.h>
+
