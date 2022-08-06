@@ -34,9 +34,10 @@
 				</Linker>
 			</Target>
 		</Build>
-		<Unit filename="main.c">
+		<Unit filename="Vectores.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="Vectores.h" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

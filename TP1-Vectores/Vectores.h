@@ -2,6 +2,7 @@
 #define VECTORES_H
 
 #define CAPACIDAD_VECTOR 10
+#define NO_ENCONTRADO -1
 #define TODO_OK 0
 #define ERROR -123456
 #define SIN_MEMORIA 2
@@ -36,22 +37,32 @@ int eliminarTodasLasAparicionesAritPunt(Vector* vect, const int elem);
 /////////////////////////////////////////FUNCIONES VARIAS CON VECTORES/////////////////////////////////////////
 
 void crearVector(Vector *vect);
+
 int insertarEnVectorOrdSinDup(Vector* vect, const int elem);
 int insertarEnVectorOrdConDup(Vector* vect, const int elem);
-/*int insertarEnVecAlInicioSinDup(Vector *vector, int elem);      ///
-int insertarEnVecAlInicioConDup(Vector *vector, int elem);        ///
-int insertarEnVecAlInicioConDupAritPunt(Vector *vector, int elem);   ///
-int insertarEnVecAlFinal(Vector *vector, int elem);   ///
-int insertarEnVecEnPosicion(Vector *vector, int elem, int pos);    ///
-int buscarEnVecDesordenadoConDupAritPunt(const Vector *vector, int elem, int *dirDesde);    ///
-int buscarEnVecOrdenado(const Vector *vector, int elem);    ///
-int buscarEnVecDesordenado(const Vector *vector, int elem);  ///
-int buscarEnVecDesordenadoApariciones(const Vector *vector, VectorApariciones *vecA, int elem);   ///
-int buscarEnVecDesordenadoAparicionesAritPunt(const Vector *vector, VectorApariciones *vectAp, int elem, int desde);   ///
-int buscarMenor(const Vector *vector);
-int buscarMayor(const Vector *vector);
-booleano eliminarDeVecAlFinal(Vector *vector);    ///
-booleano eliminarDeVecEnPosicion(Vector *vector, int elem, int pos);   ///
+int insertarEnVecAlInicioSinDup(Vector *vect, const int elem);
+int insertarEnVecAlInicioConDup(Vector* vect, const int elem);
+int insertarEnVecAlInicioSinDupAritPunt(Vector* vect, const int elem);
+int insertarEnVecAlInicioConDupAritPunt(Vector* vect, const int elem);
+int insertarEnVecAlFinalSinDup(Vector* vect, const int elem);
+int insertarEnVecAlFinalConDup(Vector* vect, const int elem);
+int insertarEnVecAlFinalSinDupAritPunt(Vector* vect, const int elem);
+int insertarEnVecAlFinalConDupAritPunt(Vector* vect, const int elem);
+
+int buscarEnVecDesordenadoSinDup(const Vector *vect, const int elem);
+int buscarEnVecDesordenadoConDup(const Vector* vect, Vector* vectPos, const int elem);
+int buscarEnVecDesordenadoSinDupAritPunt(const Vector* vect, const int elem);
+int buscarEnVecDesordenadoConDupAritPunt(const Vector* vect, Vector* vectPos, const int elem);
+int buscarEnVecOrdenadoSinDup(const Vector* vect, const int elem);
+int buscarEnVecOrdenadoConDup(const Vector* vect, Vector* vectPos, const int elem);
+int buscarEnVecOrdenadoSinDupAritPunt(const Vector* vect, const int elem);
+int buscarEnVecOrdenadoConDupAritPunt(const Vector* vect, Vector* vectPos, const int elem);
+int buscarMenor(const Vector* vect);
+int buscarMenorAritPunt(const Vector* vect);
+int buscarMayor(const Vector* vect);
+int buscarMayorAritPunt(const Vector* vect);
+
+/*booleano eliminarDeVecAlFinal(Vector *vector);    ///
 booleano eliminarDeVectorOrdPorValor(Vector *vector, int elem);    ///
 booleano eliminarDeVectorDesordPorValor(Vector *vector, int elem); ///
 booleano eliminarDeVectorDesordPorValorAritPunt(Vector *vector, int elem, int *Dirdesde);   ///

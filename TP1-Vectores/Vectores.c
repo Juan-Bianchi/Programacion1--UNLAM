@@ -339,19 +339,334 @@ int insertarEnVectorOrdConDup(Vector* vect, const int elem)
 
 
 
-/*int insertarEnVecAlInicioSinDup(Vector *vector, int elem);      ///
-int insertarEnVecAlInicioConDup(Vector *vector, int elem);        ///
-int insertarEnVecAlInicioConDupAritPunt(Vector *vector, int elem);   ///
-int insertarEnVecAlFinal(Vector *vector, int elem);   ///
-int insertarEnVecEnPosicion(Vector *vector, int elem, int pos);    ///
-int buscarEnVecDesordenadoConDupAritPunt(const Vector *vector, int elem, int *dirDesde);    ///
-int buscarEnVecOrdenado(const Vector *vector, int elem);    ///
-int buscarEnVecDesordenado(const Vector *vector, int elem);  ///
-int buscarEnVecDesordenadoApariciones(const Vector *vector, VectorApariciones *vecA, int elem);   ///
-int buscarEnVecDesordenadoAparicionesAritPunt(const Vector *vector, VectorApariciones *vectAp, int elem, int desde);   ///
-int buscarMenor(const Vector *vector);
-int buscarMayor(const Vector *vector);
-booleano eliminarDeVecAlFinal(Vector *vector);    ///
+int insertarEnVecAlInicioSinDup(Vector* vect, const int elem)
+{
+    int i = 0;
+
+    if(vect->cantElem >= CAPACIDAD_VECTOR)
+        return SIN_MEMORIA;
+
+    while(vect->vec[i] != elem && i < vect->cantElem)
+        i++;
+
+    if(vect->vec[i] == elem)
+        return DUPLICADO;
+
+    desplazarPosVecALaDer(vect, 1);
+    vect->vec[0] = elem;
+    vect->cantElem ++;
+
+    return TODO_OK;
+}
+
+
+int insertarEnVecAlInicioConDup(Vector* vect, const int elem)
+{
+    if(vect->cantElem >= CAPACIDAD_VECTOR)
+        return SIN_MEMORIA;
+
+    desplazarPosVecALaDer(vect, 1);
+    vect->vec[0] = elem;
+    vect->cantElem ++;
+
+    return TODO_OK;
+}
+
+
+int insertarEnVecAlInicioConDupAritPunt(Vector* vect, const int elem)
+{
+    if(vect->cantElem >= CAPACIDAD_VECTOR)
+        return SIN_MEMORIA;
+
+    desplazarPosVecALaDerAritPunt(vect, 1);
+    *(vect->vec) = elem;
+    vect->cantElem ++;
+
+    return TODO_OK;
+}
+
+
+int insertarEnVecAlFinalSinDup(Vector* vect, const int elem)
+{
+    int i=0;
+
+    if(vect->cantElem >= CAPACIDAD_VECTOR)
+        return SIN_MEMORIA;
+
+    while(vect->vec[i] != elem && i < vect->cantElem)
+        i ++;
+
+    if(vect->vec[i] == elem)
+        return DUPLICADO;
+
+    vect->vec[vect->cantElem] = elem;
+    vect->cantElem ++;
+
+    return TODO_OK;
+}
+
+
+
+int insertarEnVecAlFinalSinDupAritPunt(Vector* vect, const int elem)
+{
+    int* pVec = vect->vec, pos=1;
+
+    if(vect->cantElem >= CAPACIDAD_VECTOR)
+        return SIN_MEMORIA;
+
+    while(*pVec != elem && pVec < vect->vec + vect->cantElem)
+    {
+        pVec ++;
+        pos ++;
+    }
+
+    if(*pVec == elem)
+        return DUPLICADO;
+
+    desplazarPosVecALaDerAritPunt(vect, pos);
+    *(vect->vec + pos - 1) = elem;
+    vect->cantElem ++;
+
+    return TODO_OK;
+}
+
+
+
+int insertarEnVecAlFinalConDup(Vector* vect, const int elem)
+{
+    if(vect->cantElem >= CAPACIDAD_VECTOR)
+        return SIN_MEMORIA;
+
+    vect->vec[vect->cantElem] = elem;
+    vect->cantElem ++;
+
+    return TODO_OK;
+}
+
+
+int insertarEnVecAlFinalConDupAritPunt(Vector* vect, const int elem)
+{
+    if(vect->cantElem >= CAPACIDAD_VECTOR)
+        return SIN_MEMORIA;
+
+    *(vect->vec + vect->cantElem) = elem;
+    vect->cantElem ++;
+
+    return TODO_OK;
+}
+
+
+int buscarEnVecDesordenadoSinDup(const Vector* vect, const int elem)
+{
+    int i=0;
+
+    while(vect->vec[i] != elem && i < vect->cantElem)
+        i ++;
+
+    return (vect->vec[i] == elem)? i+1: NO_ENCONTRADO;
+}
+
+
+int buscarEnVecDesordenadoConDup(const Vector* vect, Vector* vectPos, const int elem)
+{
+    int i=0, j=0;
+    booleano elemEncontrado = FALSO;
+
+    while(i < vect->cantElem)
+    {
+        if(vect->vec[i] == elem)
+        {
+            vectPos->vec[j] = i+1;
+            vectPos->cantElem ++;
+            j ++;
+            elemEncontrado = VERDADERO;
+        }
+        i ++;
+    }
+    return (!elemEncontrado)? NO_ENCONTRADO: TODO_OK;
+}
+
+
+int buscarEnVecDesordenadoSinDupAritPunt(const Vector* vect, const int elem)
+{
+    const int* pVec = vect->vec;
+    int pos=1;
+
+    while(*pVec != elem && pVec < vect->vec + vect->cantElem)
+    {
+        pVec ++;
+        pos ++;
+    }
+
+    return (*pVec==elem)? pos: NO_ENCONTRADO;
+}
+
+
+int buscarEnVecDesordenadoConDupAritPunt(const Vector* vect, Vector* vectPos, const int elem)
+{
+    const int* pVec = vect->vec;
+    int* pVecPos = vectPos->vec;
+    int pos=1;
+    booleano elemEncontrado = FALSO;
+
+    while(pVec < vect->vec + vect->cantElem)
+    {
+        if(*pVec == elem)
+        {
+            *(pVecPos) = pos;
+            pVecPos ++;
+            vectPos->cantElem ++;
+            elemEncontrado = VERDADERO;
+        }
+        pos ++;
+        pVec ++;
+    }
+
+    return (!elemEncontrado)? NO_ENCONTRADO: TODO_OK;
+}
+
+
+
+int buscarEnVecOrdenadoSinDup(const Vector* vect, const int elem)
+{
+    int i=0;
+
+    while(vect->vec[i] <= elem && i < vect->cantElem)
+        i ++;
+
+    return (vect->vec[i] == elem)? i+1: NO_ENCONTRADO;
+}
+
+
+int buscarEnVecOrdenadoConDup(const Vector* vect, Vector* vectPos, const int elem)
+{
+    int i=0, j=0;
+    booleano elemEncontrado = FALSO;
+
+    while(vect->vec[i] <= elem && i < vect->cantElem)
+    {
+        if(vect->vec[i] == elem)
+        {
+            vectPos->vec[j] = i + 1;
+            vectPos->cantElem ++;
+            j ++;
+            elemEncontrado = VERDADERO;
+        }
+        i ++;
+    }
+    return (!elemEncontrado)? NO_ENCONTRADO: TODO_OK;
+}
+
+
+int buscarEnVecOrdenadoSinDupAritPunt(const Vector* vect, const int elem)
+{
+    const int* pVec = vect->vec;
+    int pos=1;
+
+    while(*pVec <= elem && pVec < vect->vec + vect->cantElem)
+    {
+        pVec ++;
+        pos ++;
+    }
+
+    return (*pVec == elem)? pos: NO_ENCONTRADO;
+}
+
+
+int buscarEnVecOrdenadoConDupAritPunt(const Vector* vect, Vector* vectPos, const int elem)
+{
+    const int* pVec = vect->vec;
+    int* pVecPos = vectPos->vec;
+    int pos = 1;
+    booleano elemEncontrado = FALSO;
+
+    while(*pVec <= elem && pVec < vect->vec + vect->cantElem)
+    {
+        if(*pVec == elem)
+        {
+            *pVecPos = pos;
+            pVecPos ++;
+            pos ++;
+            elemEncontrado = VERDADERO;
+        }
+        pVec ++;
+    }
+    return (elemEncontrado)? TODO_OK: NO_ENCONTRADO;
+}
+
+
+int buscarMenor(const Vector* vect)
+{
+    int i, menor = vect->vec[0];
+
+    if(vect->cantElem == 0)
+        return ERROR;
+
+    for(i=1; i<vect->cantElem; i++)
+    {
+        if(menor > vect->vec[i])
+            menor = vect->vec[i];
+    }
+
+    return menor;
+}
+
+
+int buscarMenorAritPunt(const Vector* vect)
+{
+    const int* pVec = vect->vec;
+    int menor = *pVec;
+
+    if(vect->cantElem == 0)
+        return ERROR;
+
+    for(pVec = vect->vec + 1; pVec < vect->vec + vect->cantElem; pVec++)
+    {
+        if(menor > *pVec)
+            menor = *pVec;
+    }
+
+    return menor;
+}
+
+
+int buscarMayor(const Vector* vect)
+{
+    int i, mayor = vect->vec[0];
+
+    if(vect->cantElem == 0)
+        return ERROR;
+
+    for(i=1; i < vect->cantElem; i++)
+    {
+        if(mayor < vect->vec[i])
+            mayor = vect->vec[i];
+    }
+
+    return mayor;
+}
+
+
+int buscarMayorAritPunt(const Vector* vect)
+{
+    const int* pVec = vect->vec;
+    int mayor = *pVec;
+
+    if(vect->cantElem == 0)
+        return ERROR;
+
+    for(pVec = vect->vec + 1 ; pVec < vect->vec + vect->cantElem; pVec++)
+    {
+        if(mayor < *pVec)
+            mayor = *pVec;
+    }
+
+    return mayor;
+}
+
+
+
+/*booleano eliminarDeVecAlFinal(Vector *vector);    ///
 booleano eliminarDeVecEnPosicion(Vector *vector, int elem, int pos);   ///
 booleano eliminarDeVectorOrdPorValor(Vector *vector, int elem);    ///
 booleano eliminarDeVectorDesordPorValor(Vector *vector, int elem); ///

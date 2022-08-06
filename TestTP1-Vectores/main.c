@@ -12,6 +12,7 @@ int main(int argc, char* argv[])
     Vector vect;
     int i, pos, num;
 
+    crearVector(&vect);
     for(i=0; i<CAPACIDAD_VECTOR - 5; i++)
        vect.vec[i] = i + 1;
 
