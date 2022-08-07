@@ -9,10 +9,11 @@ int validaIntMayA(const int inf);
 
 int main(int argc, char* argv[])
 {
-    Vector vect;
+    Vector vect, vectSinDup, vectPos;
     int i, pos, num;
 
     crearVector(&vect);
+    crearVector(&vectPos);
     for(i=0; i<CAPACIDAD_VECTOR - 5; i++)
        vect.vec[i] = i + 1;
 
@@ -129,6 +130,108 @@ int main(int argc, char* argv[])
     }
     else
         printf("El numero ingresado no se encuentra en el arreglo de enteros.\n");
+
+
+
+    puts("\n\n\nSE VERIFICARAN EL RESTO DE LAS FUNCIONES REALIZADAS: ");
+    crearVector(&vectSinDup);
+    printf("Se ingresara el numero %d al inicio del vector usando subindices: \n", atoi(argv[1]));
+    insertarEnVecAlInicioSinDup(&vectSinDup, atoi(argv[1]));
+    mostrarVector(&vectSinDup);
+    printf("Se ingresara el numero %d al inicio del vector usando aritmetica de punteros: \n", atoi(argv[2]));
+    insertarEnVecAlInicioSinDupAritPunt(&vectSinDup, atoi(argv[2]));
+    mostrarVectorAritPunt(&vectSinDup);
+    printf("Se ingresara el numero %d al final del vector usando subindices: \n", atoi(argv[3]));
+    insertarEnVecAlFinalSinDup(&vectSinDup, atoi(argv[3]));
+    mostrarVector(&vectSinDup);
+    printf("Se ingresara el numero %d al final del vector usando aritmetica de punteros: \n", atoi(argv[4]));
+    insertarEnVecAlFinalSinDupAritPunt(&vectSinDup, atoi(argv[4]));
+    mostrarVectorAritPunt(&vectSinDup);
+    printf("Se ordenara el arreglo de manera descendente utilizando el metodo de insercion: \n");
+    ordenaVectInsercionDescend(&vectSinDup);
+    mostrarVector(&vectSinDup);
+    printf("Se ordenara el arreglo de manera ascendente utilizando el metodo de burbujeo: \n");
+    ordenarVectorBurbujeoAscendente(&vectSinDup);
+    mostrarVector(&vectSinDup);
+    printf("Se ordenara el arreglo de manera descendente utilizando el metodo de seleccion: \n");
+    ordenarVectorSeleccionDescen(&vectSinDup);
+    mostrarVector(&vectSinDup);
+    printf("Se ordenara el arreglo de manera ascendente utilizando el metodo de insercion: \n");
+    ordenaVectInsercionAscend(&vectSinDup);
+    mostrarVector(&vectSinDup);
+    printf("Se buscara el numero %d en el arreglo ordenado usando subindices: \n", atoi(argv[2]));
+    pos = buscarEnVecOrdenadoSinDup(&vectSinDup, atoi(argv[2]));
+    (pos==NO_ENCONTRADO)? printf("El numero no esta en el arreglo\n\n"): printf("El numero esta en la posicion %d\n\n", pos);
+    printf("Se buscara el numero %d en el arreglo ordenado usando aritmetica de punteros: \n", atoi(argv[2]));
+    pos = buscarEnVecOrdenadoSinDupAritPunt(&vectSinDup, atoi(argv[2]));
+    (pos==NO_ENCONTRADO)? printf("El numero no esta en el arreglo\n\n"): printf("El numero esta en la posicion %d\n\n", pos);
+    printf("Se insertaran varios numeros para transformar al vector en uno con duplicados: \n");
+    insertarEnVecAlFinalConDup(&vectSinDup, atoi(argv[1]));
+    insertarEnVecAlFinalConDupAritPunt(&vectSinDup, atoi(argv[2]));
+    insertarEnVecAlInicioConDupAritPunt(&vectSinDup, atoi(argv[3]));
+    insertarEnVecAlInicioConDup(&vectSinDup, atoi(argv[4]));
+    mostrarVectorAritPunt(&vectSinDup);
+    printf("El menor numero del arreglo encontrado usando subindices es %d\n\n", buscarMenor(&vectSinDup));
+    printf("El menor numero del arreglo encontrado usando aritmetica de punteros es %d\n\n", buscarMenorAritPunt(&vectSinDup));
+    printf("El mayor numero del arreglo encontrado usando subindices es %d\n\n", buscarMayor(&vectSinDup));
+    printf("El mayor numero del arreglo encontrado usando aritmetica de punteros es %d\n\n", buscarMayorAritPunt(&vectSinDup));
+    printf("Se buscara el numero %d en el arreglo desordenado usando subindices: \n", atoi(argv[1]));
+    buscarEnVecDesordenadoConDup(&vectSinDup, &vectPos, atoi(argv[1]));
+    if(vectPos.cantElem!=0)
+    {
+        printf("Los posiciones del numero buscado son: ");
+        for(i=0; i<vectPos.cantElem; i++)
+            printf("%d - ", vectPos.vec[i]);
+        printf("\n\n");
+    }
+    else
+        printf("El numero no esta en el arreglo\n\n");
+
+    vaciarVector(&vectPos);
+    printf("Se buscara el numero %d en el arreglo desordenado usando aritmetica de punteros: \n", atoi(argv[2]));
+    buscarEnVecDesordenadoConDupAritPunt(&vectSinDup, &vectPos, atoi(argv[2]));
+    if(vectPos.cantElem!=0)
+    {
+        printf("Los posiciones del numero buscado son: ");
+        for(i=0; i<vectPos.cantElem; i++)
+            printf("%d - ", vectPos.vec[i]);
+        printf("\n\n");
+    }
+    else
+        printf("El numero no esta en el arreglo\n\n");
+
+    printf("Se ordenara el arreglo de manera descendente utilizando el metodo de burbujeo: \n");
+    ordenarVectorBurbujeoDescendente(&vectSinDup);
+    mostrarVector(&vectSinDup);
+    printf("Se ordenara el arreglo de manera ascendente utilizando el metodo de seleccion: \n");
+    ordenarVectorSeleccionAscen(&vectSinDup);
+    mostrarVector(&vectSinDup);
+
+    vaciarVector(&vectPos);
+    printf("Se buscara el numero %d en el arreglo ordenado usando subindices: \n", atoi(argv[1]));
+    buscarEnVecOrdenadoConDup(&vectSinDup, &vectPos, atoi(argv[1]));
+    if(vectPos.cantElem!=0)
+    {
+        printf("Los posiciones del numero buscado son: ");
+        for(i=0; i<vectPos.cantElem; i++)
+            printf("%d - ", vectPos.vec[i]);
+        printf("\n\n");
+    }
+    else
+        printf("El numero no esta en el arreglo\n\n");
+
+    vaciarVector(&vectPos);
+    printf("Se buscara el numero %d en el arreglo ordenado usando aritmetica de punteros: \n", atoi(argv[2]));
+    buscarEnVecOrdenadoConDupAritPunt(&vectSinDup, &vectPos, atoi(argv[2]));
+    if(vectPos.cantElem!=0)
+    {
+        printf("Los posiciones del numero buscado son: ");
+        for(i=0; i<vectPos.cantElem; i++)
+            printf("%d - ", vectPos.vec[i]);
+        printf("\n\n");
+    }
+    else
+        printf("El numero no esta en el arreglo\n\n");
 
 
     return 0;

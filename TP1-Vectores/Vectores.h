@@ -62,22 +62,23 @@ int buscarMenorAritPunt(const Vector* vect);
 int buscarMayor(const Vector* vect);
 int buscarMayorAritPunt(const Vector* vect);
 
-/*booleano eliminarDeVecAlFinal(Vector *vector);    ///
-booleano eliminarDeVectorOrdPorValor(Vector *vector, int elem);    ///
-booleano eliminarDeVectorDesordPorValor(Vector *vector, int elem); ///
-booleano eliminarDeVectorDesordPorValorAritPunt(Vector *vector, int elem, int *Dirdesde);   ///
-booleano eliminarDeVecAparicionesValorAritPunt(Vector *vector, int elem);    ///
-void vaciarVector(Vector *vector);   ///
-void ordenarVectorBurbujeoAscendente(Vector *vector);   ///
-void ordenarVectorBurbujeoDescendente(Vector *Vector);  ///
-void ordenarVectorSeleccionAscen(Vector *vector);   ///
-void ordenarVectorSeleccionDescen(Vector *vector);  ///
-void ordenarVectorInsercionDescen(Vector *vector);*/
+int eliminarDeVecUltElem(Vector* vect);
+int eliminarDeVecUltElemAritPunt(Vector* vect);
+int eliminarDeVecPrimerElem(Vector* vect);
+int eliminarDeVecPrimerElemAritPunt(Vector* vect);
+
+void vaciarVector(Vector* vect);
+void ordenarVectorBurbujeoAscendente(Vector* vect);
+void ordenarVectorBurbujeoDescendente(Vector* vect);
+void ordenarVectorSeleccionAscen(Vector* vect);
+void ordenarVectorSeleccionDescen(Vector* vect);
+void ordenaVectInsercionAscend(Vector* vect);
+void ordenaVectInsercionDescend(Vector* vect);
 
 void mostrarVector(const Vector* vect);
 void mostrarVectorAritPunt(const Vector* vect);
 
-void ordenaVectInsercionAscend(Vector* vect);
+
 
 
 #endif // VECTORES_H

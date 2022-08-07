@@ -359,6 +359,25 @@ int insertarEnVecAlInicioSinDup(Vector* vect, const int elem)
     return TODO_OK;
 }
 
+int insertarEnVecAlInicioSinDupAritPunt(Vector* vect, const int elem)
+{
+    int* pVec = vect->vec;
+
+    if(vect->cantElem == CAPACIDAD_VECTOR)
+        return ERROR;
+
+    while(*pVec != elem && pVec < vect->vec + vect->cantElem)
+        pVec ++;
+
+    if(*pVec == elem)
+        return DUPLICADO;
+
+    desplazarPosVecALaDerAritPunt(vect, 1);
+    *(vect->vec) = elem;
+    vect->cantElem ++;
+
+    return TODO_OK;
+}
 
 int insertarEnVecAlInicioConDup(Vector* vect, const int elem)
 {
@@ -531,7 +550,7 @@ int buscarEnVecOrdenadoSinDup(const Vector* vect, const int elem)
 {
     int i=0;
 
-    while(vect->vec[i] <= elem && i < vect->cantElem)
+    while(vect->vec[i] < elem && i < vect->cantElem)
         i ++;
 
     return (vect->vec[i] == elem)? i+1: NO_ENCONTRADO;
@@ -563,7 +582,7 @@ int buscarEnVecOrdenadoSinDupAritPunt(const Vector* vect, const int elem)
     const int* pVec = vect->vec;
     int pos=1;
 
-    while(*pVec <= elem && pVec < vect->vec + vect->cantElem)
+    while(*pVec < elem && pVec < vect->vec + vect->cantElem)
     {
         pVec ++;
         pos ++;
@@ -586,9 +605,10 @@ int buscarEnVecOrdenadoConDupAritPunt(const Vector* vect, Vector* vectPos, const
         {
             *pVecPos = pos;
             pVecPos ++;
-            pos ++;
+            vectPos->cantElem ++;
             elemEncontrado = VERDADERO;
         }
+        pos ++;
         pVec ++;
     }
     return (elemEncontrado)? TODO_OK: NO_ENCONTRADO;
@@ -666,16 +686,187 @@ int buscarMayorAritPunt(const Vector* vect)
 
 
 
-/*booleano eliminarDeVecAlFinal(Vector *vector);    ///
-booleano eliminarDeVecEnPosicion(Vector *vector, int elem, int pos);   ///
-booleano eliminarDeVectorOrdPorValor(Vector *vector, int elem);    ///
-booleano eliminarDeVectorDesordPorValor(Vector *vector, int elem); ///
-booleano eliminarDeVectorDesordPorValorAritPunt(Vector *vector, int elem, int *Dirdesde);   ///
-booleano eliminarDeVecAparicionesValorAritPunt(Vector *vector, int elem);    ///
-void vaciarVector(Vector *vector);   ///
-void ordenarVectorBurbujeoAscendente(Vector *vector);   ///
-void ordenarVectorBurbujeoDescendente(Vector *Vector);  ///
-void ordenarVectorSeleccionAscen(Vector *vector);   ///
-void ordenarVectorSeleccionDescen(Vector *vector);  ///
-void ordenarVectorInsercionDescen(Vector *vector);
-*/
+int eliminarDeVecUltElem(Vector* vect)
+{
+    if(vect->cantElem == 0)
+        return ERROR;
+
+    vect->cantElem --;
+
+    return vect->vec[vect->cantElem];                   //retorna elemento eliminado
+}
+
+
+
+int eliminarDeVecUltElemAritPunt(Vector* vect)
+{
+    if(vect->cantElem == 0)
+        return ERROR;
+
+    vect->cantElem --;
+
+    return *(vect->vec + vect->cantElem);               //retorna elemento eleminado
+}
+
+
+int eliminarDeVecPrimerElem(Vector* vect)
+{
+    int eliminado;
+
+    if(vect->cantElem == 0)
+        return ERROR;
+
+    eliminado = vect->vec[0];
+
+    desplazarPosVecALaIzq(vect, 1);
+    vect->cantElem --;
+
+    return eliminado;
+}
+
+
+int eliminarDeVecPrimerElemAritPunt(Vector* vect)
+{
+    int eliminado = *(vect->vec);
+
+    if(vect->cantElem == 0)
+        return ERROR;
+
+    desplazarPosVecALaIzqAritPunt(vect, 1);
+    vect->cantElem --;
+
+    return eliminado;
+}
+
+
+void vaciarVector(Vector* vect)
+{
+    vect->cantElem = 0;
+}
+
+
+void ordenarVectorBurbujeoAscendente(Vector *vect)
+{
+    int  cota, j, desordenado = 1, aux;
+
+    cota = vect->cantElem - 1;
+    while(desordenado != 0)
+    {
+        desordenado = 0;
+
+        for(j=0; j < cota; j++)
+        {
+            if(vect->vec[j+1] < vect->vec[j])
+            {
+                aux = vect->vec[j];
+                vect->vec[j] = vect->vec[j+1];
+                vect->vec[j+1] = aux;
+
+                desordenado = j;
+            }
+        }
+        cota = desordenado;
+    }
+}
+
+void ordenarVectorBurbujeoDescendente(Vector* vect)
+{
+    int desordenado = 1, cota, j, aux;
+
+    cota = vect->cantElem - 1;
+    while(desordenado!=0)
+    {
+        desordenado = 0;
+        for(j=0; j < cota; j++)
+        {
+            if(vect->vec[j+1] > vect->vec[j])
+            {
+                aux = vect->vec[j+1];
+                vect->vec[j+1] = vect->vec[j];
+                vect->vec[j] = aux;
+
+                desordenado = j;
+            }
+        }
+        cota = desordenado;
+    }
+}
+
+
+
+void ordenarVectorSeleccionAscen(Vector* vect)
+{
+    int menor, i, j, aux, pos;
+
+    for(i=0; i<vect->cantElem - 1; i++)
+    {
+        j = i;
+        menor = vect->vec[j];
+        pos = j;
+
+        while(j < vect->cantElem)
+        {
+            if(vect->vec[j] < menor)
+            {
+                menor = vect->vec[j];
+                pos = j;
+            }
+            j++;
+        }
+        if(menor != vect->vec[i])
+        {
+            aux = vect->vec[i];
+            vect->vec[i] = vect->vec[pos];
+            vect->vec[pos] = aux;
+        }
+    }
+}
+
+
+
+void ordenarVectorSeleccionDescen(Vector* vect)
+{
+    int mayor, i, j, aux, pos;
+
+    for(i=0; i<vect->cantElem - 1; i++)
+    {
+        j = i;
+        mayor = vect->vec[j];
+        pos = j;
+
+        while(j < vect->cantElem)
+        {
+            if(vect->vec[j] > mayor)
+            {
+                mayor = vect->vec[j];
+                pos = j;
+            }
+
+            j++;
+        }
+        if(mayor != vect->vec[i])
+        {
+            aux = vect->vec[i];
+            vect->vec[i] = vect->vec[pos];
+            vect->vec[pos] = aux;
+        }
+    }
+}
+
+
+void ordenaVectInsercionDescend(Vector* vect)
+{
+    int i, j, elemIns;
+
+    for(i=1; i<vect->cantElem; i++)
+    {
+        elemIns = vect->vec[i];
+        j = i - 1;
+        while(elemIns > vect->vec[j] && j>=0)
+        {
+            vect->vec[j+1] = vect->vec[j];
+            j--;
+        }
+        vect->vec[j+1] = elemIns;
+    }
+}
