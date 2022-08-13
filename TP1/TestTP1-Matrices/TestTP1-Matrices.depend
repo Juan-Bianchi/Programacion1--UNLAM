@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1660412880 source:c:\users\juan\desktop\codificaciones-progra1\progra1\tp1\testtp1-matrices\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"../TP1-Matrices/Matrices.h"
+
+1660412798 c:\users\juan\desktop\codificaciones-progra1\progra1\tp1\tp1-matrices\matrices.h
+	<stdio.h>
+

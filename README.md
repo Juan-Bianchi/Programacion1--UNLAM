@@ -10,3 +10,4 @@ caracteres como la ñ. Cuando se deba ingresar números con decimales se debe us
 El proyecto del tipo fecha usa como fecha base al 01/01/1601 y realiza varias operaciones con fechas.
 El proyecto Vectores tiene diferentes funciones basicas que se realizan normalmente con vectores. Se hacen funciones utilizando el método trandicional (con subídices) 
 y otras funciones alternativas utilizando aritmética de punteros.
+Muchos de los ejercicios se resuelven con datos ingresados por teclado mientras otros se resuelven con datos enviados como argumento a main.
