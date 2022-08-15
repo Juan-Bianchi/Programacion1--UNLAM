@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1660518552 source:c:\users\juan\desktop\codificaciones-progra1\progra1\tp2\tp2-vectores\vectores.c
+	"Vectores.h"
+
+1660516516 c:\users\juan\desktop\codificaciones-progra1\progra1\tp2\tp2-vectores\vectores.h
+	<stdio.h>
+

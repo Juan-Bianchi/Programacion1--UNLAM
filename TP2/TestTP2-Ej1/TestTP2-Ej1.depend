@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1660431133 source:c:\users\juan\desktop\codificaciones-progra1\progra1\tp2\testtp2-ej1\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"../TP2-Vectores/Vectores.h"
+	"../TP2-FuncionesConArchivos/Archivos.h"
+
+1660428578 c:\users\juan\desktop\codificaciones-progra1\progra1\tp2\tp2-vectores\vectores.h
+	<stdio.h>
+
+1660423673 c:\users\juan\desktop\codificaciones-progra1\progra1\tp2\tp2-funcionesconarchivos\archivos.h
+	<stdio.h>
+

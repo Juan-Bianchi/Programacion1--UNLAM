@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1660574805 source:c:\users\juan\desktop\codificaciones-progra1\progra1\tp2\testtp2-ej4-5\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
