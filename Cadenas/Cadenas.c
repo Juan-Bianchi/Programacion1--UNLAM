@@ -319,3 +319,231 @@ char* strstr_JUAN(const char* cad1, const char* cad2)
     return (!*cad1 && !*cad2)? (char*)dest: NULL;
 }
 
+
+/*Ejercicio 8
+Dado un array de char que contiene un texto compuesto por palabras que termina en '.' (o en su defecto en carácter nulo -'\0'-), escriba un
+programa en que determine e informe:
+a- cuál es la primera palabra y cuántas veces se repite en el texto
+b- cuántas palabras tiene el texto
+c- longitud de la palabra más larga*/
+
+///considerare como palabra a toda combinacion con cualquier caracter, todas las palabras estaran separadas por un espacio vacio///
+
+int contarOcurrenciasDePrimerPalabra(const char* texto, char* palabra)
+{
+    char* pPal = palabra;
+    int cant = 0;
+
+    while(*texto == ' ')
+        texto ++;
+
+    while(*texto != ' ' && *texto != '.' && *texto != '\0')
+    {
+        *pPal = *texto;
+        texto ++;
+        pPal ++;
+    }
+
+    if(pPal != palabra)
+    {
+        *pPal = '\0';
+        cant ++;
+    }
+
+    while(*texto != '.' && *texto != '\0')
+    {
+        pPal = palabra;
+
+        if(*(texto-1) == ' ')
+        {
+            while(*texto != '.' && *texto != '\0' && *texto == *pPal)
+            {
+                texto ++;
+                pPal ++;
+            }
+            if(*pPal == '\0' && (*texto == ' ' || *texto == '.' || *texto == '\0'))
+                cant ++;
+        }
+        texto ++;
+    }
+
+    return cant;
+}
+
+
+
+
+int contarCantidadDePalabrasEnTexto(const char* texto)
+{
+    int cant = 0;
+
+    while(*texto != '.' && *texto != '\0')
+    {
+        while(*texto == ' ')
+            texto ++;
+
+        while(*texto != ' ' && *texto != '.' && *texto != '\0')
+            texto ++;
+
+        if(*(texto-1) != ' ' && *texto == ' ')
+            cant ++;
+    }
+    if(*(texto-1) != ' ')
+        cant ++;
+
+    return cant;
+}
+
+
+
+int longitudDePalabraMasLargaEnTexto(const char* texto)
+{
+    int longitud, max=0;
+
+    while(*texto != '.' && *texto != '\0')
+    {
+        longitud = 0;
+        while(*texto != ' ' && *texto != '.' && *texto != '\0')
+        {
+            longitud ++;
+            texto ++;
+        }
+        if(longitud > max)
+            max = longitud;
+        texto ++;
+    }
+
+    return max;
+}
+
+/*Ejercicio 10
+Escriba una función que determine si una cadena de caracteres que representa a un número, es decir compuesta por los caracteres que
+representan dígitos, recibida por argumento:
+- es capicúa (es obvio),
+- es múltiplo de 5 (el último dígito es 0 ó 5),
+- es múltiplo de 6 (es par -termina en '0', '2', '4', '6', '8'-; y la suma de sus dígitos es múltiplo de 3),
+- es múltiplo de 11 (la suma de los dígitos de posiciones pares, y la suma de los dígitos de posiciones impares es múltiplo de 11),
+- es mayor que "100" (o cualquier otra cadena representando un número entero cualquiera, p. ej.: "-42").
+Escriba una función que valide si todos los caracteres de una cadena representan un número dentro del intervalo de los: short int.*/
+
+
+
+
+booleano esNumeroCadena(char* cadena)
+{
+    if(*cadena == '\0')
+        return FALSO;
+
+    while(*cadena >= '0' && *cadena <= '9')
+        cadena ++;
+
+    return *cadena == '\0';
+}
+
+
+
+booleano esCapicua(char* cadena)
+{
+    char* fin;
+
+    if(!esNumeroCadena(cadena))
+        return FALSO;
+
+    fin = strchr(cadena, '\0');
+    fin --;
+
+    while(*cadena == *fin && cadena < fin)
+    {
+        cadena ++;
+        fin --;
+    }
+
+    return cadena >= fin;
+}
+
+
+
+
+booleano esMultiploDeCinco(char* cadena)
+{
+    char* pUltDig = strchr(cadena, '\0') - 1;
+
+    if(!esNumeroCadena(cadena))
+        return FALSO;
+
+    return *pUltDig % 5 == 0;
+}
+
+
+
+booleano esMultiploDeSeis(char* cadena)
+{
+    int suma = 0, num = 0;
+
+    if(!esNumeroCadena(cadena))
+        return FALSO;
+
+    if(atoi(cadena) % 2 != 0)
+        return FALSO;
+
+    while(*cadena != '\0')
+    {
+        num = *cadena - 48;
+        suma += num;
+        cadena ++;
+    }
+
+    return suma % 3 == 0;
+}
+
+
+
+booleano esMultiploDeOnce(char* cadena)
+{
+    int i=0, sumaP = 0, sumaI = 0;
+
+    if(!esNumeroCadena(cadena))
+        return FALSO;
+
+    while(*cadena != '\0')
+    {
+        if(i%2==0)
+            sumaP += *cadena - 48;
+        else
+            sumaI += *cadena - 48;
+
+        i ++;
+        cadena ++;
+    }
+
+    return sumaI % 11 == 0 && sumaP % 11 == 0;
+}
+
+
+
+booleano esMayorAN(char* cadena, int n)
+{
+    if(!esNumeroCadena(cadena))
+        return FALSO;
+
+    return atoi(cadena) > n;
+}
+
+
+
+booleano esShortInt(char* cadena)
+{
+    if(!esNumeroCadena(cadena))
+        return FALSO;
+
+    return atoi(cadena) >= -32768 && atoi(cadena) <= 32768;
+}
+
+
+
+/*Ejercicio 11
+Leyendo (sólo una vez) un archivo de texto como el del <ej.: 9> y utilizando las funciones del <ej.: 10>, y otras al efecto, determinar:
+- cuántos son múltiplo de 5,
+- cuántos son múltiplo de 6,
+- cuántos son múltiplo de 11, y
+- generar un archivo con los que sean mayores que "100" (o cualquier otro número recibido por argumento en la línea de comando)*/

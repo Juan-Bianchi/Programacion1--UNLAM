@@ -2,6 +2,13 @@
 #define CADENAS_H
 
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+#define VERDADERO 1
+#define FALSO 0
+
+typedef int booleano;
 
 int typedef (*Cmp)(const void* elem1, const void* elem2);
 
@@ -24,5 +31,23 @@ char* strpbrk_JUAN(const char* cad1, const char* cad2);                    //Loc
 char* strrchr_JUAN(char* cad, int cantCar);                                //Localiza la última aparición de c (convertido a unsigned char) en la cadena apuntada por s (incluyendo el carácter nulo). La función retorna un puntero a partir del carácter encontrado. Si no se ha encontrado el carácter, c, entonces retorna un puntero nulo.
 size_t strspn_JUAN(const char* cad1, const char* cad2);                    //Calcula el número de caracteres de una subcadena inicial apuntada por s1 que consiste en todos los caracteres formados en la cadena apuntada por s2. La función retorna la longitud de esta subcadena.
 char* strstr_JUAN(const char* cad1, const char* cad2);                     //Localiza la primera aparición en la cadena apuntada por s1 de la secuencia de caracteres (excluyendo el carácter nulo) en la cadena apuntada por s2. La función retorna un puntero a la cadena encontrada, o un puntero nulo si no se encontró la cadena. Si s2 apunta a una cadena de longitud cero, la función retorna s1.
+
+
+
+int contarOcurrenciasDePrimerPalabra(const char* texto, char* palabra);
+int contarCantidadDePalabrasEnTexto(const char* texto);
+int longitudDePalabraMasLargaEnTexto(const char* texto);
+
+booleano esNumeroCadena(char* cadena);
+booleano esCapicua(char* cadena);
+booleano esMultiploDeCinco(char* cadena);
+booleano esMultiploDeSeis(char* cadena);
+booleano esMultiploDeOnce(char* cadena);
+booleano esMayorAN(char* cadena, int n);
+booleano esShortInt(char* cadena);
+
+
+
+
 
 #endif // CADENAS_H

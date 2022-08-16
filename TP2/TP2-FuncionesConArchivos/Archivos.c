@@ -34,8 +34,6 @@ Escriba una macro multilínea que cumpla con el mismo cometido.*/
 
 booleano archivoAbiertoCorrectamente(FILE* arch, char* nombre, char* modoApert)
 {
-    arch = fopen(nombre, modoApert);
-
     if(arch == NULL)
     {
         printf("El archivo '%s' no ha podido abrirse en el modo '%s'. Verifique el error.\n", nombre, modoApert);

@@ -1,7 +1,9 @@
 # depslib dependency file v1.0
-1659900163 source:c:\users\juan\desktop\codificaciones-progra1\progra1\cadenas\cadenas.c
+1660611976 source:c:\users\juan\desktop\codificaciones-progra1\progra1\cadenas\cadenas.c
 	"Cadenas.h"
 
-1659892285 c:\users\juan\desktop\codificaciones-progra1\progra1\cadenas\cadenas.h
+1660612000 c:\users\juan\desktop\codificaciones-progra1\progra1\cadenas\cadenas.h
 	<stdio.h>
+	<string.h>
+	<stdlib.h>
 
