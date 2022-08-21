@@ -320,6 +320,48 @@ char* strstr_JUAN(const char* cad1, const char* cad2)
 }
 
 
+
+/*Ejercicio 27
+Desarrollar una función que determine si una cadena de caracteres es un palíndromo.*/
+
+booleano esUnPalindromo(char* cadena)
+{
+    char* pFinal = strrchr(cadena, '\0');
+    booleano esPal = VERDADERO, tieneLetra = FALSO;
+
+    while(cadena < pFinal && esPal)
+    {
+        while(!es_letra(*cadena) && !es_letra(*pFinal) && cadena < pFinal && esPal)
+        {
+            cadena++;
+            pFinal--;
+        }
+        while(!es_letra(*cadena) && es_letra(*pFinal) && cadena < pFinal && esPal)
+        {
+            cadena++;
+            tieneLetra = VERDADERO;
+        }
+        while(es_letra(*cadena) && !es_letra(*pFinal) && cadena < pFinal && esPal)
+        {
+            pFinal--;
+            tieneLetra = VERDADERO;
+        }
+        while(es_letra(*cadena) && es_letra(*pFinal) && cadena < pFinal && esPal)
+        {
+            tieneLetra = VERDADERO;
+
+            if(toupper(*cadena) != toupper(*pFinal))
+                esPal = FALSO;
+
+            cadena++;
+            pFinal--;
+        }
+    }
+
+    return tieneLetra && cadena >= pFinal;
+}
+
+
 /*Ejercicio 8
 Dado un array de char que contiene un texto compuesto por palabras que termina en '.' (o en su defecto en carácter nulo -'\0'-), escriba un
 programa en que determine e informe:

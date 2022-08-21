@@ -11,4 +11,5 @@ typedef int booleano;
 void vectFloatAArchTxt(FILE* arch, float* vect, const int cantElem);
 booleano archivoAbiertoCorrectamente(FILE* arch, char* nombre, char* modoApert);
 
+
 #endif // ARCHIVOS_H

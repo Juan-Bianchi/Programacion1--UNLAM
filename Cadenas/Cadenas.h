@@ -4,9 +4,12 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 #define VERDADERO 1
 #define FALSO 0
+
+#define es_letra(a)     (((a) >= 'A' && (a) <= 'Z') || ((a) >= 'a' && (a) <= 'z'))
 
 typedef int booleano;
 
@@ -33,6 +36,7 @@ size_t strspn_JUAN(const char* cad1, const char* cad2);                    //Cal
 char* strstr_JUAN(const char* cad1, const char* cad2);                     //Localiza la primera aparición en la cadena apuntada por s1 de la secuencia de caracteres (excluyendo el carácter nulo) en la cadena apuntada por s2. La función retorna un puntero a la cadena encontrada, o un puntero nulo si no se encontró la cadena. Si s2 apunta a una cadena de longitud cero, la función retorna s1.
 
 
+booleano esUnPalindromo(char* cadena);
 
 int contarOcurrenciasDePrimerPalabra(const char* texto, char* palabra);
 int contarCantidadDePalabrasEnTexto(const char* texto);

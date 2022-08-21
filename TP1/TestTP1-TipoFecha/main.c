@@ -16,16 +16,8 @@ int main()
 
     setlocale(LC_ALL, "spanish");
     puts("Ejercicio 14");
-    do
-    {
-        printf("Ingrese una fecha para verificar si la misma es válida (dd/mm/aaaa): ");
-        fflush(stdin);
-        scanf("%d/%d/%d", &fecha.dia, &fecha.mes, &fecha.anio);
-        fflush(stdin);
-        esValido = esFechaValida(&fecha);
-        if(!esValido)
-            printf("La fecha ingresada no es válida, vuelva a ingresar: ");
-    } while(!esValido);
+    printf("Se ingresara una fecha para ver si la misma es valia.\n");
+    ingresarFechaValida(&fecha);
     printf("La fecha %02d/%02d/%04d es válida.\n\n", fecha.dia, fecha.mes, fecha.anio);
 
     puts("Ejercicio 15");

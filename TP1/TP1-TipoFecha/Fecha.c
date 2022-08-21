@@ -32,6 +32,22 @@ int cantDiasXMes(const int mes, const int anio)
 }
 
 
+void ingresarFechaValida(tFecha* fecha)
+{
+    int esValido;
+
+    do
+    {
+        printf("Ingrese una fecha para verificar si la misma es válida (dd/mm/aaaa): ");
+        fflush(stdin);
+        scanf("%d/%d/%d", &fecha->dia, &fecha->mes, &fecha->anio);
+        fflush(stdin);
+        esValido = esFechaValida(fecha);
+        if(!esValido)
+            printf("La fecha ingresada no es válida, vuelva a ingresar: ");
+    } while(!esValido);
+}
+
 
 /*Ejercicio 15
 Desarrollar una función que a partir de una fecha obtenga la correspondiente al día siguiente.*/

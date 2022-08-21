@@ -11,6 +11,7 @@ typedef struct
         anio;
 } tFecha;
 
+void ingresarFechaValida(tFecha* fecha);
 int esFechaValida(const tFecha* fecha);
 void sumaUnDiaAFecha(const tFecha* fecha, tFecha* fechaModif);
 void sumarNDiasAFecha(const tFecha* fecha, const int cantDias, tFecha* fechaModif);

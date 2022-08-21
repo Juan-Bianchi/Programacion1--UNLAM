@@ -23,3 +23,5 @@ En la carpeta TP2 se encuentran:
  conversiones de cadenas pasadas como argumento a main.
 -La carpeta TestTP2-Ej6 tiene aplicaciones del uso de macros y macros multilinea emulando funciones.
 -La carpeta TP2-FuncionesConArchivos contiente biblioteca estatica con funciones con archivos.
+-La carpeta TestTP2-Ej7-8 tiene ejercicios con strings(longitud de palabras, contar palabras, etc)
+-La carpeta TestTP2-Ej9-10-11 tiene ejercicios con strings(transformar strings a numeros y hacer operaciones con esos numeros) y ademas manejo de archivos de texto.
