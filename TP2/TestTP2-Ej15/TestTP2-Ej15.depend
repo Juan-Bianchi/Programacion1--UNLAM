@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1661289375 source:c:\users\juan\desktop\codificaciones-progra1\progra1\tp2\testtp2-ej15\main.c
+	<stdio.h>
+	<stdlib.h>
+	"../../Cadenas/cadenas.h"
+
+1661287371 c:\users\juan\desktop\codificaciones-progra1\progra1\cadenas\cadenas.h
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<ctype.h>
+

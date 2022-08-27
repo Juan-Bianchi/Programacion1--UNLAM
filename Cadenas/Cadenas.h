@@ -10,6 +10,10 @@
 #define FALSO 0
 
 #define es_letra(a)     (((a) >= 'A' && (a) <= 'Z') || ((a) >= 'a' && (a) <= 'z'))
+#define es_numero(x)    ( (x) >= '0' && (x) <= '9' )
+#define es_alfanum(x)   ( ( (x) >= 'a' && (x) <= 'z') || ( (x) >= 'A' && (x) <= 'Z' ) ||  ((x) >= '0' && (x) <= '9') )
+#define es_vocal(x)     ( (x) == 'a' || (x) == 'e' || (x) == 'i' || (x) == 'o' || (x) == 'u' || (x) == 'A' || (x) == 'E' || (x) == 'I' || (x) == 'O' || (x) == 'U' )
+
 
 typedef int booleano;
 
@@ -23,6 +27,7 @@ void* memset_JUAN(void* cad, int caract, size_t cantCar);                  //Cop
 char* strcat_JUAN(char* cad1, const char* cad2);                           //Añade una copia de la cadena apuntada por s2 (incluyendo el carácter nulo) al final de la cadena apuntada por s1. El carácter inicial de s2 sobrescribe el carácter nulo al final de s1.
 char* strchr_JUAN(char* cad, int caract);                                  //Localiza la primera aparición de c (convertido a unsigned char) en la cadena apuntada por s (incluyendo el carácter nulo). La función retorna un puntero a partir del carácter encontrado. Si no se ha encontrado el carácter, c, entonces retorna un puntero null.
 int strcmp_JUAN(const char* cad1, const char* cad2);                       //Compara la cadena apuntada por s1 con la cadena apuntada por s2. La función retorna un número entero mayor, igual, o menor que cero, apropiadamente según la cadena apuntada por s1 es mayor, igual, o menor que la cadena apuntada por s2.
+int strcmpi_JUAN(const char* cad1, const char* cad2);                      //Hace una comparacion sin signo(unsigned char)sin tener en cuenta mayusculas y minusculas(habitualmente declarada como macro.
 char* strcpy_JUAN(char* cad1, const char* cad2);                           //Copia la cadena apuntada por s2 (incluyendo el carácter nulo) a la cadena apuntada por s1. La función retorna el valor de s1. Si al copiar una cadena a la otra se superponen, entonces el comportamiento no está definido.
 size_t strcspn_JUAN(const char* cad1, const char* cad2);                   //Cuenta el número de caracteres de una subcadena inicial apuntada por s1 que no contenga ninguno de los caracteres en la cadena apuntada por s2. La función retorna el número de caracteres leídos de la subcadena hasta que halla alguno de los caracteres de s2. El carácter nulo no se cuenta.
 char* strerror_JUAN(int errnum);                                           //Convierte el número de error en errnum a un mensaje de error (una cadena de caracteres). La función retorna la cadena de caracteres conteniendo el mensaje asociado con el número de error. Esta conversión y el contenido del mensaje dependen de la implementación. La cadena no será modificada por el programa, pero sí puede ser sobrescrito con otra llamada a la misma función.
@@ -33,7 +38,7 @@ char* strncpy_JUAN(char* cad1, const char* cad2, size_t cantCar);          //Cop
 char* strpbrk_JUAN(const char* cad1, const char* cad2);                    //Localiza la primera aparición de la cadena apuntada por s1 de cualquier carácter de la cadena apuntada por s2. La función retorna un puntero al carácter, o un puntero nulo si ningún carácter de s2 apareció en s1.
 char* strrchr_JUAN(char* cad, int cantCar);                                //Localiza la última aparición de c (convertido a unsigned char) en la cadena apuntada por s (incluyendo el carácter nulo). La función retorna un puntero a partir del carácter encontrado. Si no se ha encontrado el carácter, c, entonces retorna un puntero nulo.
 size_t strspn_JUAN(const char* cad1, const char* cad2);                    //Calcula el número de caracteres de una subcadena inicial apuntada por s1 que consiste en todos los caracteres formados en la cadena apuntada por s2. La función retorna la longitud de esta subcadena.
-char* strstr_JUAN(const char* cad1, const char* cad2);                     //Localiza la primera aparición en la cadena apuntada por s1 de la secuencia de caracteres (excluyendo el carácter nulo) en la cadena apuntada por s2. La función retorna un puntero a la cadena encontrada, o un puntero nulo si no se encontró la cadena. Si s2 apunta a una cadena de longitud cero, la función retorna s1.
+int strstr_JUAN(const char* cad1, const char* cad2);                       //Localiza la primera aparición en la cadena apuntada por s1 de la secuencia de caracteres (excluyendo el carácter nulo) en la cadena apuntada por s2. La función retorna un puntero a la cadena encontrada, o un puntero nulo si no se encontró la cadena. Si s2 apunta a una cadena de longitud cero, la función retorna s1.
 
 
 booleano esUnPalindromo(char* cadena);
@@ -49,9 +54,6 @@ booleano esMultiploDeSeis(char* cadena);
 booleano esMultiploDeOnce(char* cadena);
 booleano esMayorAN(char* cadena, int n);
 booleano esShortInt(char* cadena);
-
-
-
 
 
 #endif // CADENAS_H

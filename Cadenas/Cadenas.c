@@ -142,12 +142,50 @@ int strcmp_JUAN(const char* cad1, const char* cad2)
 }
 
 
+int strcmpi_JUAN(const char* cad1, const char* cad2)
+{
+    char l1, l2;
+
+    l1 = *cad1;
+    l2 = *cad2;
+
+    if(l1 >= 'a' && l1 <= 'z')
+        l1 -= 32;
+    if(l2 >= 'a' && l2 <= 'z')
+        l2 -= 32;
+
+    while(l1 != '\0' && l2 != '\0' && l1 == l2)
+    {
+        cad1++;
+        cad2++;
+
+        l1 = *cad1;
+        l2 = *cad2;
+
+        if(l1 >= 'a' && l1 <= 'z')
+            l1 -= 32;
+        if(l2 >= 'a' && l2 <= 'z')
+            l2 -= 32;
+    }
+
+    if(l1 == '\0' && l2 != '\0')
+        return -1;
+
+    if(l1 != '\0' && l2 == '\0')
+        return 1;
+
+    return l1 - l2;
+
+
+}
+
+
 
 char* strcpy_JUAN(char* cad1, const char* cad2)
 {
     char* dest = cad1;
 
-    while(cad1 && cad2)
+    while(*cad2 && *cad2 != '\n')
     {
         *cad1 = *cad2;
         cad1 ++;
@@ -304,19 +342,32 @@ size_t strspn_JUAN(const char* cad1, const char* cad2)
 
 
 
-char* strstr_JUAN(const char* cad1, const char* cad2)
+int strstr_JUAN(const char* cad1, const char* cad2)
 {
-    const char* dest = cad1;
+    const char* pCad2 = cad2, * inicio = cad1;
+    int cont, pos;
+    booleano encontrado = FALSO;
 
-    if(!*cad2)
-        return (char*)cad1;
-
-    while(*cad1 && *cad2 && *cad1 == *cad2)
+    while(*cad1 && *pCad2 && !encontrado)
     {
-        cad1 ++;
-        cad2 ++;
+        pCad2 = cad2;
+        cont = 0;
+        while(*cad1 == *pCad2)
+        {
+            cad1 ++;
+            pCad2 ++;
+            cont ++;
+            pos++;
+        }
+        if(strlen_JUAN(cad2) == cont)
+        {
+            pos = cad1 - inicio - cont;
+            encontrado = VERDADERO;
+        }
+        cad1++;
     }
-    return (!*cad1 && !*cad2)? (char*)dest: NULL;
+
+    return (encontrado)? pos: -1;
 }
 
 
@@ -580,12 +631,3 @@ booleano esShortInt(char* cadena)
 
     return atoi(cadena) >= -32768 && atoi(cadena) <= 32768;
 }
-
-
-
-/*Ejercicio 11
-Leyendo (sólo una vez) un archivo de texto como el del <ej.: 9> y utilizando las funciones del <ej.: 10>, y otras al efecto, determinar:
-- cuántos son múltiplo de 5,
-- cuántos son múltiplo de 6,
-- cuántos son múltiplo de 11, y
-- generar un archivo con los que sean mayores que "100" (o cualquier otro número recibido por argumento en la línea de comando)*/

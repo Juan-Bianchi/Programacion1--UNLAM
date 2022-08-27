@@ -93,6 +93,30 @@ void sumarNDiasAFecha(const tFecha* fecha, const int cantDias, tFecha* fechaModi
 }
 
 
+void sumarNDiasAFechaInSitu(tFecha* fecha, const int cantDias)
+{
+    int cantD;
+
+    fecha->dia += cantDias;
+
+    cantD = cantDiasXMes(fecha->mes, fecha->anio);
+    while(fecha->dia > cantD)
+    {
+        fecha->anio += fecha->mes / 12;
+
+        if(fecha->mes == 12)
+            fecha->mes = 1;
+        else
+            fecha->mes ++;
+
+        fecha->dia -= cantD;
+
+        cantD = cantDiasXMes(fecha->mes, fecha->anio);
+    }
+}
+
+
+
 /*Ejercicio 17
 Desarrollar una función que a partir de una fecha obtenga la que resulte de restarle N días.*/
 
@@ -115,6 +139,29 @@ void restarNDiasAFecha(const tFecha* fecha, const int cantDias, tFecha* fechaMod
         fechaModif->dia += cantDiasXMes(fechaModif->mes, fechaModif->anio);
     }
 }
+
+
+
+void restarNDiasAFechaInSitu(tFecha* fecha, const int cantDias)
+{
+    int cantD;
+
+    fecha->dia -= cantDias;
+
+    while(fecha->dia < 1)
+    {
+        if(fecha->mes == 1)
+        {
+            fecha->mes = 12;
+            fecha->anio --;
+        }
+        else
+            fecha->mes --;
+
+        fecha->dia += cantDiasXMes(fecha->mes, fecha->anio);
+    }
+}
+
 
 
 /*Ejercicio 18
