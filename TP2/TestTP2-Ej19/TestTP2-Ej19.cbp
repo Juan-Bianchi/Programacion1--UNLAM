@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="TestTP2-Ej19" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/TestTP2-Ej19" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Option parameters="archalea.dat archal1.dat archal2.dat archal3.dat archal1.txt archal2.txt archal3.txt archtex1.txt archtex2.txt archtex3.txt archord1.txt archord2.txt archord3.txt archord.txt" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add library="../../Cadenas/bin/Debug/libCadenas.a" />
+					<Add library="../TP2-FuncionesConArchivos/bin/Debug/libTP2-FuncionesConArchivos.a" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/TestTP2-Ej19" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+		</Compiler>
+		<Unit filename="main.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Extensions />
+	</Project>
+</CodeBlocks_project_file>

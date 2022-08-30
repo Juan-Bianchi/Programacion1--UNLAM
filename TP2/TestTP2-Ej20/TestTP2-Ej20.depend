@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1661898957 source:c:\users\juan\desktop\codificaciones-progra1\progra1\tp2\testtp2-ej20\recursivas.c
+	"Recursivas.h"
+
+1661898638 c:\users\juan\desktop\codificaciones-progra1\progra1\tp2\testtp2-ej20\recursivas.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1661899248 source:c:\users\juan\desktop\codificaciones-progra1\progra1\tp2\testtp2-ej20\main.c
+	"Recursivas.h"
+
