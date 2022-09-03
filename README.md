@@ -25,3 +25,11 @@ En la carpeta TP2 se encuentran:
 -La carpeta TP2-FuncionesConArchivos contiente biblioteca estatica con funciones con archivos.
 -La carpeta TestTP2-Ej7-8 tiene ejercicios con strings(longitud de palabras, contar palabras, etc)
 -La carpeta TestTP2-Ej9-10-11 tiene ejercicios con strings(transformar strings a numeros y hacer operaciones con esos numeros) y ademas manejo de archivos de texto.
+-La carpeta TestTP2-Ej12 tiene implementacion de arrays bidimencionales y se genera un archivo .txt con formato definido utilizando funciones como por ej fgets
+-La carpeta TestTP2-Ej13 tiene un ejercicio de uso de archivos binarios. Lectura y modificacion del mismo. Se utiliza corte de control y funciones como fseek.
+-La carpeta TestTP2-Ej14 se ejercita con arrays de caracteres y se compara con una funcion personalizada emulando la de string.h
+-La carpeta TestTP2-Ej15, la TestTP2-Ej16 y la TestTP2-Ej18 tiene diferentes funciones de manejo de archivos .txt tales como busqueda de caracteres, contar apariciones 
+ de un caracter, grabar las palabras con una determinada cantidad de letras, etc.
+-La carpeta TestTP2-Ej19 tiene manejo de archivos binarios, la conversion de los mismos a archivos .txt y luego el ordenamiento de los datos sacados de dichos .txt
+-La carpeta TestTP2-20 tiene varias funciones recursivas.
+
