@@ -5,6 +5,14 @@ int Fecha::vecDiaAcum[13] = {0, 0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304
 int Fecha::vecDiaAcumBis[13] = {0, 0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 335};
 
 
+
+void Fecha::getDma(int* dia, int* mes, int* anio)
+{
+    diaRelADma(dia, mes, anio);
+}
+
+
+
 void Fecha::dmaADiaRel(int dia, int mes, int anio)
 {
     if(!esFechaValida(dia, mes, anio))
@@ -48,9 +56,9 @@ int Fecha::diasDelAnio(int dia, int mes, int anio)
 void Fecha::diaDelAnioADiaMes(int diasAcum, int* dia, int* mes, int anio)
 {
     int* pVecDiaAcum = esBisiesto(anio)? vecDiaAcumBis: vecDiaAcum;
-    int m=1;
+    int m=0;
 
-    while(*pVecDiaAcum <= diasAcum)
+    while(*pVecDiaAcum < diasAcum)
     {
         pVecDiaAcum ++;
         m++;
@@ -142,3 +150,52 @@ void Fecha::incrementarDia()
 {
     this->diaRel += 1;
 }
+
+
+
+Fecha Fecha::operator +(int dias) const
+{
+    Fecha f;
+
+    f.diaRel += dias;
+
+    return f;
+}
+
+
+
+Fecha& Fecha::operator += (int dias)
+{
+    this->diaRel += dias;
+
+    return *this;
+}
+
+
+
+Fecha& Fecha::operator -= (int dias)
+{
+    this->diaRel -= dias;
+
+    return *this;
+}
+
+
+
+Fecha Fecha::operator -(int dias)const
+{
+    Fecha f;
+
+    f.diaRel -= dias;
+
+    return f;
+}
+
+
+
+int Fecha::operator -(const Fecha& f2)const
+{
+    return this->diaRel - f2.diaRel;
+}
+
+

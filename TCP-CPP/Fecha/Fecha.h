@@ -31,7 +31,13 @@ class Fecha
         int diferenciaDias(const Fecha* fecha);
         int diaDeLaSemana()const;
         void incrementarDia();
-        
+        void getDma(int* dia, int* mes, int* anio);
+
+        Fecha operator +(int dias) const;
+        Fecha& operator += (int dias);
+        Fecha& operator -= (int dias);
+        Fecha operator -(int dias)const;
+        int operator -(const Fecha& f2)const;
 };
 
 #endif // FECHA_H
