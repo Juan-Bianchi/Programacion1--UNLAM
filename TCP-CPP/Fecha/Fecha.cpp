@@ -1,4 +1,6 @@
 #include "Fecha.h"
+#include "fechainvalidaexception.h"
+
 
 int Fecha::cantDM[13]={0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 int Fecha::vecDiaAcum[13] = {0, 0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334};
@@ -6,14 +8,7 @@ int Fecha::vecDiaAcumBis[13] = {0, 0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 
 
 
 
-void Fecha::getDma(int* dia, int* mes, int* anio)
-{
-    diaRelADma(dia, mes, anio);
-}
-
-
-
-void Fecha::dmaADiaRel(int dia, int mes, int anio)
+void Fecha::setDma(int dia, int mes, int anio)
 {
     if(!esFechaValida(dia, mes, anio))
         throw FECHA_INVALIDA;
@@ -25,7 +20,7 @@ void Fecha::dmaADiaRel(int dia, int mes, int anio)
 
 
 
-void Fecha::diaRelADma(int* dia, int* mes, int* anio)
+void Fecha::getDma(int& dia, int& mes, int& anio) const
 {
     int anioAcumTot = this->diaRel / 365;
     int diasAcumTot = anioAcumTot * 365 + anioAcumTot / 400 + anioAcumTot / 4 - anioAcumTot / 100;
@@ -36,11 +31,11 @@ void Fecha::diaRelADma(int* dia, int* mes, int* anio)
         diasAcumTot = anioAcumTot * 365 + anioAcumTot / 400 + anioAcumTot / 4 - anioAcumTot / 100;
     }
 
-    *anio = anioAcumTot + ANIO_BASE;
+    anio = anioAcumTot + ANIO_BASE;
 
     int diaDelAnio = this->diaRel - diasAcumTot;
 
-    diaDelAnioADiaMes(diaDelAnio, dia, mes, *anio);
+    diaDelAnioADiaMes(diaDelAnio, dia, mes, anio);
 }
 
 
@@ -53,7 +48,7 @@ int Fecha::diasDelAnio(int dia, int mes, int anio)
 
 
 
-void Fecha::diaDelAnioADiaMes(int diasAcum, int* dia, int* mes, int anio)
+void Fecha::diaDelAnioADiaMes(int diasAcum, int& dia, int& mes, int anio)
 {
     int* pVecDiaAcum = esBisiesto(anio)? vecDiaAcumBis: vecDiaAcum;
     int m=0;
@@ -66,10 +61,9 @@ void Fecha::diaDelAnioADiaMes(int diasAcum, int* dia, int* mes, int anio)
     m --;
     pVecDiaAcum --;
 
-    *mes = m;
-    *dia = diasAcum - *pVecDiaAcum;
+    mes = m;
+    dia = diasAcum - *pVecDiaAcum;
 }
-
 
 
 int Fecha::cantDiasDelMes(int mes, int anio)
@@ -105,7 +99,7 @@ Fecha::Fecha()
 
 Fecha::Fecha(int dia, int mes, int anio)
 {
-    dmaADiaRel(dia, mes, anio);
+    setDma(dia, mes, anio);
 }
 
 
@@ -184,7 +178,10 @@ Fecha& Fecha::operator -= (int dias)
 
 Fecha Fecha::operator -(int dias)const
 {
-    Fecha f;
+    Fecha f(*this);
+
+    if(f.diaRel - dias < 1)
+        throw FechaInvalidaException("La fecha no es valida.");
 
     f.diaRel -= dias;
 
@@ -199,3 +196,69 @@ int Fecha::operator -(const Fecha& f2)const
 }
 
 
+
+Fecha& Fecha::operator ++()
+{
+    ++ this->diaRel;
+
+    return *this;
+}
+
+
+
+Fecha Fecha::operator ++(int)
+{
+    Fecha fPre(*this);
+
+    this->diaRel ++;
+
+    return fPre;
+}
+
+
+
+Fecha& Fecha::operator --()
+{
+    -- this->diaRel;
+
+    return *this;
+}
+
+
+
+Fecha Fecha::operator --(int)
+{
+    Fecha fPrev(*this);
+
+    this->diaRel --;
+
+    return fPrev;
+}
+
+
+
+ostream& operator << (ostream& os, Fecha& fecha)
+{
+    int dia, mes, anio;
+
+    fecha.getDma(dia, mes, anio);
+
+    os << dia << "/" << mes << "/" << anio << endl;
+
+    return os;
+}
+
+
+
+istream& operator >>(istream& is, Fecha& fecha)
+{
+    int dia, mes, anio;
+    char barra;
+
+    cout << "A continuacion ingrese dd/mm/aaaa: ";
+    cin >> dia >> barra >> mes >> barra >> anio;
+
+    fecha.setDma(dia, mes, anio);
+
+    return is;
+}

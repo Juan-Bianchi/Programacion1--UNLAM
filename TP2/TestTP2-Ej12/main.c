@@ -75,7 +75,7 @@ int validaIntEntre(const int inf, const int sup)
     fflush(stdin);
     scanf("%d", &num);
     fflush(stdin);
-    while(num<inf ||B num>sup)
+    while(num<inf || num>sup)
     {
         printf("El numero %d no es correcto. El mismo debe estar entre %d y %d. Vuelva a ingresar: ", num, inf, sup);
         fflush(stdin);

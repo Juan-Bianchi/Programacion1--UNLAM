@@ -38,6 +38,8 @@
 		</Build>
 		<Unit filename="Fecha.cpp" />
 		<Unit filename="Fecha.h" />
+		<Unit filename="fechainvalidaexception.cpp" />
+		<Unit filename="fechainvalidaexception.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

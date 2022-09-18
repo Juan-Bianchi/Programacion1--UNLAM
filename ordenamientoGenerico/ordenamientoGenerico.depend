@@ -1,0 +1,22 @@
+# depslib dependency file v1.0
+1663199278 source:e:\codificaciones-progra1\progra1\cadenas\ordenamientogenerico\ordenamientogenerico.c
+	"ordenamientoGenerico.h"
+
+1663199452 e:\codificaciones-progra1\progra1\cadenas\ordenamientogenerico\ordenamientogenerico.h
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+
+1663276384 source:c:\users\juan\desktop\codificaciones-progra1\progra1\ordenamientogenerico\ordenamientogenerico.c
+	"ordenamientoGenerico.h"
+
+1663275780 c:\users\juan\desktop\codificaciones-progra1\progra1\ordenamientogenerico\ordenamientogenerico.h
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+
+1663358414 source:c:\users\juan\desktop\codificaciones-progra1\progra1\ordenamientogenerico\main.c
+	<stdio.h>
+	<stdlib.h>
+	"ordenamientoGenerico.h"
+

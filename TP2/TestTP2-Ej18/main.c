@@ -1,7 +1,7 @@
 /*Ejercicio 18
-Ingrese hasta un máximo de 1000 caracteres (o hasta que se ingrese el carácter
-'.'. Mostrar por pantalla el carácter inmediato posterior
-(p. ej.: "a bgxj" ->"b!chyk"; "Zapato" -> "[bqbup"). Grabar en un archivo aquellas palabras con más de una determinada cantidad de letras que se
+Ingrese hasta un mï¿½ximo de 1000 caracteres (o hasta que se ingrese el carï¿½cter
+'.'. Mostrar por pantalla el carï¿½cter inmediato posterior
+(p. ej.: "a bgxj" ->"b!chyk"; "Zapato" -> "[bqbup"). Grabar en un archivo aquellas palabras con mï¿½s de una determinada cantidad de letras que se
 deben pedir al operador al comienzo del proceso.*/
 
 

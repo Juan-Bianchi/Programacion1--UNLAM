@@ -1,5 +1,13 @@
 #include "Cadenas.h"
 
+
+char toSinTilde(char letra);
+bool esLetra(char letra);
+char* saltarBlancos(char* izq);
+char* saltarBlancosR(char* der, char* izq);
+
+
+
 void* memchr_JUAN(const void* cadena, int caract, size_t cantCar)
 {
     const char* pCad = (const char*)(cadena);
@@ -346,7 +354,7 @@ int strstr_JUAN(const char* cad1, const char* cad2)
 {
     const char* pCad2 = cad2, * inicio = cad1;
     int cont, pos;
-    booleano encontrado = FALSO;
+    bool encontrado = false;
 
     while(*cad1 && *pCad2 && !encontrado)
     {
@@ -375,10 +383,11 @@ int strstr_JUAN(const char* cad1, const char* cad2)
 /*Ejercicio 27
 Desarrollar una función que determine si una cadena de caracteres es un palíndromo.*/
 
-booleano esUnPalindromo(char* cadena)
+
+bool esUnPalindromo(char* cadena)
 {
     char* pFinal = strrchr(cadena, '\0');
-    booleano esPal = VERDADERO, tieneLetra = FALSO;
+    bool esPal = true, tieneLetra = false;
 
     while(cadena < pFinal && esPal)
     {
@@ -411,6 +420,124 @@ booleano esUnPalindromo(char* cadena)
 
     return tieneLetra && cadena >= pFinal;
 }
+
+
+
+bool esUnPalindromoPan(char* pal)
+{
+    char* izq = pal;
+    char* der = pal + strlen(pal) - 1;
+
+    izq = saltarBlancos(izq);
+    der = saltarBlancosR(der, izq);
+
+    while(izq < der && tolower(toSinTilde(*izq)) == tolower(toSinTilde(*der)))
+    {
+        izq ++;
+        izq = saltarBlancos(izq);
+        der --;
+        der = saltarBlancosR(der, izq);
+    }
+
+    return izq >= der;
+}
+
+
+
+
+
+
+bool esPalindromoPalabraPAN(const char* pal)
+{
+    const char* der = pal;
+    const char* izq = pal + strlen(pal) - 1;
+
+    while(izq < der && *izq == *der)
+    {
+        izq ++;
+        der --;
+    }
+
+    return izq >= der;
+}
+
+
+
+bool esPalindromoPalabraInsensitivePAN(const char* pal)
+{
+    const char* pDer = pal;
+    const char* pIzq = pal + strlen(pal) - 1;
+
+    while(pIzq < pDer && tolower(toSinTilde(*pIzq)) == tolower(toSinTilde(*pDer)))
+    {
+        pIzq ++;
+        pDer --;
+    }
+
+    return pIzq >= pDer;
+}
+
+
+char toSinTilde(char letra)
+{
+    char conTilde[10] = {"ÁÉÍÓÚáéíóú"};
+    char sinTilde[10] = {"AEIOUaeiou"};
+    int i = 0;
+
+    while(conTilde[i] && conTilde[i] != letra)
+        i ++;
+
+    if(conTilde[i] == letra)
+        letra = sinTilde[i];
+
+    return letra;
+}
+
+
+char* saltarBlancos(char* izq)
+{
+    while(*izq && !esLetra(*izq))
+        izq ++;
+
+    return izq;
+}
+
+
+
+char* saltarBlancosR(char* der, char* izq)
+{
+    while(der > izq && !esLetra(*der))
+        der --;
+
+    return der;
+}
+
+
+bool esLetra(char letra)
+{
+    char conTilde[10] = {"ÁÉÍÓÚáéíóú"};
+    int i;
+
+    while(letra != conTilde[i])
+        i ++;
+
+    return (letra <= 'A' && letra >= 'Z') || (letra <= 'a' && letra >= 'z') || (letra == conTilde[i]);
+}
+
+
+
+///USO TIPO CADENA
+
+char* normalizarATitulo(const char* textOrig, char* textoDest)
+{
+    SecuenciaPalabras secOrig, secDest;
+
+    crearSecuenciaPalabras(&secOrig, textOrig);
+    crearSecuenciaPalabras(&secDest, textoDest);
+
+
+}
+
 
 
 /*Ejercicio 8
@@ -522,7 +649,7 @@ Escriba una función que valide si todos los caracteres de una cadena representan
 
 
 
-booleano esNumeroCadena(char* cadena)
+bool esNumeroCadena(char* cadena)
 {
     if(*cadena == '\0')
         return FALSO;
@@ -535,7 +662,7 @@ booleano esNumeroCadena(char* cadena)
 
 
 
-booleano esCapicua(char* cadena)
+bool esCapicua(char* cadena)
 {
     char* fin;
 
@@ -557,7 +684,7 @@ booleano esCapicua(char* cadena)
 
 
 
-booleano esMultiploDeCinco(char* cadena)
+bool esMultiploDeCinco(char* cadena)
 {
     char* pUltDig = strchr(cadena, '\0') - 1;
 
@@ -569,15 +696,15 @@ booleano esMultiploDeCinco(char* cadena)
 
 
 
-booleano esMultiploDeSeis(char* cadena)
+bool esMultiploDeSeis(char* cadena)
 {
     int suma = 0, num = 0;
 
     if(!esNumeroCadena(cadena))
-        return FALSO;
+        return false;
 
     if(atoi(cadena) % 2 != 0)
-        return FALSO;
+        return false;
 
     while(*cadena != '\0')
     {
@@ -591,7 +718,7 @@ booleano esMultiploDeSeis(char* cadena)
 
 
 
-booleano esMultiploDeOnce(char* cadena)
+bool esMultiploDeOnce(char* cadena)
 {
     int i=0, sumaP = 0, sumaI = 0;
 
@@ -614,7 +741,7 @@ booleano esMultiploDeOnce(char* cadena)
 
 
 
-booleano esMayorAN(char* cadena, int n)
+bool esMayorAN(char* cadena, int n)
 {
     if(!esNumeroCadena(cadena))
         return FALSO;
@@ -624,7 +751,7 @@ booleano esMayorAN(char* cadena, int n)
 
 
 
-booleano esShortInt(char* cadena)
+bool esShortInt(char* cadena)
 {
     if(!esNumeroCadena(cadena))
         return FALSO;

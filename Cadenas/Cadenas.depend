@@ -1,10 +1,19 @@
 # depslib dependency file v1.0
-1661297942 source:c:\users\juan\desktop\codificaciones-progra1\progra1\cadenas\cadenas.c
+1663190362 source:c:\users\juan\desktop\codificaciones-progra1\progra1\cadenas\cadenas.c
 	"Cadenas.h"
 
-1661636873 c:\users\juan\desktop\codificaciones-progra1\progra1\cadenas\cadenas.h
+1663190362 c:\users\juan\desktop\codificaciones-progra1\progra1\cadenas\cadenas.h
 	<stdio.h>
 	<string.h>
 	<stdlib.h>
 	<ctype.h>
+	<stdbool.h>
+	"Palabra.h"
+
+1663190409 c:\users\juan\desktop\codificaciones-progra1\progra1\cadenas\palabra.h
+	<stdbool.h>
+	<ctype.h>
+
+1663190362 source:c:\users\juan\desktop\codificaciones-progra1\progra1\cadenas\palabra.c
+	"Palabra.h"
 

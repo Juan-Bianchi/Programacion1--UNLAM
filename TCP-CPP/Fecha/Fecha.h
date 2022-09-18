@@ -5,6 +5,11 @@
 #define ANIO_BASE 1601
 #define FECHA_INVALIDA 1
 
+#include <iostream>
+
+using namespace std;
+
+
 class Fecha
 {
     private:
@@ -14,13 +19,12 @@ class Fecha
         static int vecDiaAcum[13];
         static int vecDiaAcumBis[13];
 
-        void dmaADiaRel(int dia, int mes, int anio);
-        void diaRelADma(int* dia, int* mes, int* anio);
+
         inline static bool esBisiesto(int anio){return anio % 400 == 0 || (anio % 4 == 0 && anio % 100 != 0);};     //el inline no es necesario
         inline static int cantDiasDelMes(int mes, int anio);   //en este caso el inline es necesario porque la funcion se desarrolla en el .cpp
         static int diasDelAnio(int dia, int mes, int anio);
         static bool esFechaValida(int dia, int mes, int anio);
-        static void diaDelAnioADiaMes(int diasAcum, int* dia, int* mes, int anio);
+        static void diaDelAnioADiaMes(int diasAcum, int& dia, int& mes, int anio);
 
     public:
         Fecha();
@@ -31,13 +35,24 @@ class Fecha
         int diferenciaDias(const Fecha* fecha);
         int diaDeLaSemana()const;
         void incrementarDia();
-        void getDma(int* dia, int* mes, int* anio);
+        void getDma(int& dia, int& mes, int& anio)const;
+        void setDma(int dia, int mes, int anio);
+
 
         Fecha operator +(int dias) const;
         Fecha& operator += (int dias);
         Fecha& operator -= (int dias);
         Fecha operator -(int dias)const;
         int operator -(const Fecha& f2)const;
+        Fecha& operator ++();                             //Preincremento
+        Fecha operator ++(int);                           //Posincremento
+        Fecha& operator --();                             //Predecremento
+        Fecha operator --(int);                           //Posdecremento
+
+        friend ostream& operator <<(ostream& os, Fecha& fecha);
+        friend istream& operator >>(istream& is, Fecha& fecha);
+
 };
+
 
 #endif // FECHA_H

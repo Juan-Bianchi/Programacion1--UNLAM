@@ -1,7 +1,12 @@
 # depslib dependency file v1.0
-1662239607 source:c:\users\juan\desktop\codificaciones-progra1\progra1\tcp-cpp\testfecha\main.cpp
+1663465164 source:c:\users\juan\desktop\codificaciones-progra1\progra1\tcp-cpp\testfecha\main.cpp
 	<iostream>
 	"../Fecha/Fecha.h"
+	"../Fecha/fechainvalidaexception.h"
 
-1662238198 c:\users\juan\desktop\codificaciones-progra1\progra1\tcp-cpp\fecha\fecha.h
+1663513020 c:\users\juan\desktop\codificaciones-progra1\progra1\tcp-cpp\fecha\fecha.h
+	<iostream>
+
+1663130889 c:\users\juan\desktop\codificaciones-progra1\progra1\tcp-cpp\fecha\fechainvalidaexception.h
+	<string>
 
