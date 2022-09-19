@@ -18,10 +18,10 @@ Cadena::Cadena(const char* cadenaC)
 
 Cadena::Cadena(const Cadena& cadena)
 {
-    delete[] this->cadenaC;
     this->cadenaC = new char[strlen(cadena.cadenaC) + 1];
     strcpy(this->cadenaC, cadena.cadenaC);
 }
+
 
 
 Cadena::~Cadena()
@@ -91,9 +91,7 @@ int getLongitud() const;*/
 
 ostream& operator <<(ostream& os, const Cadena& cadena)
 {
-    char* cad = cadena.cadenaC;
-
-    os << cad << endl;
+    os << cadena.cadenaC << endl;
 
     return os;
 }

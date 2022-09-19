@@ -30,6 +30,8 @@ void crearSecuenciaPalabras(SecuenciaPalabras* sec, char* cad);
 bool leerPalabra(SecuenciaPalabras* sec, Palabra* pal);
 void escribirPalabra(SecuenciaPalabras* sec, Palabra* pal);
 void escribirPalabraPrimeraMayuscula(SecuenciaPalabras* sec, Palabra* pal);
+void cerrarSecuenciaPalabras(SecuenciaPalabras* sec);
+
 
 
 

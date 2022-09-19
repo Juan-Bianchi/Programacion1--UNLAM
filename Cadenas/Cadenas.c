@@ -5,6 +5,8 @@ char toSinTilde(char letra);
 bool esLetra(char letra);
 char* saltarBlancos(char* izq);
 char* saltarBlancosR(char* der, char* izq);
+void escribirCaracter(SecuenciaPalabras* cadena, char caracter);
+void retrocederPuntero(SecuenciaPalabras* cadena);
 
 
 
@@ -528,14 +530,44 @@ bool esLetra(char letra)
 
 ///USO TIPO CADENA
 
+void escribirCaracter(SecuenciaPalabras* cadena, char caracter)
+{
+    *cadena->cursor = caracter;
+    cadena ++;
+}
+
+
+void retrocederPuntero(SecuenciaPalabras* cadena)
+{
+    cadena->cursor --;
+}
+
 char* normalizarATitulo(const char* textOrig, char* textoDest)
 {
     SecuenciaPalabras secOrig, secDest;
+    Palabra pal;
+    bool hayPal;
 
-    crearSecuenciaPalabras(&secOrig, textOrig);
-    crearSecuenciaPalabras(&secDest, textoDest);
+    crearSecuenciaPalabras(&secOrig, (char*)textOrig);
+    crearSecuenciaPalabras(&secDest,(char*)textoDest);
 
+    hayPal = leerPalabra(&secOrig, &pal);
+    if(hayPal)
+        escribirPalabraPrimeraMayuscula(&secDest, &pal);
 
+    while(hayPal)
+    {
+        if(*secOrig.cursor == '\n')
+            escribirPalabraPrimeraMayuscula(&secDest, &pal);
+        escribirCaracter(&secDest, ' ');
+        escribirPalabra(&secDest, &pal);
+        hayPal = leerPalabra(&secOrig, &pal);
+    }
+
+    retrocederPuntero(&secDest);
+    cerrarSecuenciaPalabras(&secDest);
+
+    return textoDest;
 }
 
 

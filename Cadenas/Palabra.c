@@ -62,3 +62,11 @@ void escribirPalabraPrimeraMayuscula(SecuenciaPalabras* sec, Palabra* pal)
 
     sec->cursor = dest;
 }
+
+
+
+void cerrarSecuenciaPalabras(SecuenciaPalabras* sec)
+{
+    *sec->cursor = '\0';
+    sec->fSec = true;
+}
