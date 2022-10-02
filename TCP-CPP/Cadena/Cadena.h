@@ -15,15 +15,16 @@ private:
     char* cadenaC;
     static int cantDigitos(int num);
 
-public:
-    Cadena();                               ///constructor por defecto
-    Cadena(const char* cadenaC);            ///constructor que recibe cadena del tipo C
-    Cadena(const char letra);               ///constructor que recibe letra
-    Cadena(const int num);                  ///constructor que recibe un int
 
-    Cadena(const Cadena& otra);             ///constructor de copia que recibe objeto cadena
-    ~Cadena();                              ///destructor
-    Cadena& operator =(const Cadena& otra);   ///sobrecarga de asignación
+public:
+    Cadena();                                                   ///constructor por defecto
+    Cadena(const char* cadenaC);                                ///constructor que recibe cadena del tipo C
+    Cadena(const char letra);                                   ///constructor que recibe letra
+    Cadena(const int num);                                      ///constructor que recibe un int
+
+    Cadena(const Cadena& otra);                                 ///constructor de copia que recibe objeto cadena
+    ~Cadena();                                                  ///destructor
+    Cadena& operator =(const Cadena& otra);                     ///sobrecarga de asignación
 
     Cadena& operator +=(const Cadena& cadena);
 

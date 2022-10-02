@@ -23,6 +23,7 @@ int main()
     cout << "f1: " << dia << "/" << mes << "/" << anio << endl;
 
     cout << "Ahora se ingresara una fecha que posteriormente se imprimirá por pantalla: " << endl;
+    cout << "A continuacion ingrese dd/mm/aaaa: ";
     cin >> f3;
     cout  << f3 << endl;
 

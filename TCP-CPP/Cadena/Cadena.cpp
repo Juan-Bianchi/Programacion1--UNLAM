@@ -77,6 +77,7 @@ Cadena& Cadena::operator +=(const Cadena& cadena)
 
     //////////////////////////////////
     char* cadenaC = new char[strlen(this->cadenaC) + strlen(cadena.cadenaC) + 1];
+
     strcpy(cadenaC, this->cadenaC);
     strcat(cadenaC, cadena.cadenaC);
     delete [] this->cadenaC;

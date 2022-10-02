@@ -255,7 +255,6 @@ istream& operator >>(istream& is, Fecha& fecha)
     int dia, mes, anio;
     char barra;
 
-    cout << "A continuacion ingrese dd/mm/aaaa: ";
     cin >> dia >> barra >> mes >> barra >> anio;
 
     fecha.setDma(dia, mes, anio);

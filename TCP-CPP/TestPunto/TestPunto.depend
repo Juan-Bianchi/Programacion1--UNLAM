@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1664734630 source:c:\users\juan\desktop\codificaciones-progra1\progra1\tcp-cpp\testpunto\main.cpp
+	<iostream>
+	"../Punto/Punto.h"
+
+1664728280 c:\users\juan\desktop\codificaciones-progra1\progra1\tcp-cpp\punto\punto.h
+	<iostream>
+	<stdlib.h>
+
