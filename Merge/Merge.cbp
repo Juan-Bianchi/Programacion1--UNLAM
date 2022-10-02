@@ -11,7 +11,7 @@
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option parameters="Indice.idx Movimientos.dat Productos.dat w r r+b w+b Temporal.dat" />
+				<Option parameters="Indice.idx Movimientos.dat Productos.dat wb BaseDatos.dat" />
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>

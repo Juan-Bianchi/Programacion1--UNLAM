@@ -1,15 +1,22 @@
 # depslib dependency file v1.0
-1660676590 source:c:\users\juan\desktop\codificaciones-progra1\progra1\tp2\testtp2-ej9-10-11\main.c
+1664677904 source:c:\users\juan\desktop\codificaciones-progra1\progra1\tp2\testtp2-ej9-10-11\main.c
 	<stdio.h>
 	<stdlib.h>
 	"../../Cadenas/Cadenas.h"
 	"../TP2-FuncionesConArchivos/Archivos.h"
 
-1660704048 c:\users\juan\desktop\codificaciones-progra1\progra1\cadenas\cadenas.h
+1663190362 c:\users\juan\desktop\codificaciones-progra1\progra1\cadenas\cadenas.h
 	<stdio.h>
 	<string.h>
 	<stdlib.h>
+	<ctype.h>
+	<stdbool.h>
+	"Palabra.h"
 
-1660595839 c:\users\juan\desktop\codificaciones-progra1\progra1\tp2\tp2-funcionesconarchivos\archivos.h
+1663454239 c:\users\juan\desktop\codificaciones-progra1\progra1\tp2\tp2-funcionesconarchivos\archivos.h
 	<stdio.h>
+
+1663624050 c:\users\juan\desktop\codificaciones-progra1\progra1\cadenas\palabra.h
+	<stdbool.h>
+	<ctype.h>
 

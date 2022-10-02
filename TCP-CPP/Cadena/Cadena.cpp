@@ -67,13 +67,20 @@ Cadena& Cadena::operator =(const Cadena& cadena)
 
 Cadena& Cadena::operator +=(const Cadena& cadena)
 {
-    char cadOrig[strlen(this->cadenaC)];
+   /* char cadOrig[strlen(this->cadenaC)];
     strcpy(cadOrig, this->cadenaC);
     delete [] this->cadenaC;
 
     this->cadenaC = new char[strlen(cadOrig) + strlen(cadena.cadenaC) + 1];
     strcpy(this->cadenaC, cadOrig);
-    strcat(this->cadenaC, cadena.cadenaC);
+    strcat(this->cadenaC, cadena.cadenaC);*/
+
+    //////////////////////////////////
+    char* cadenaC = new char[strlen(this->cadenaC) + strlen(cadena.cadenaC) + 1];
+    strcpy(cadenaC, this->cadenaC);
+    strcat(cadenaC, cadena.cadenaC);
+    delete [] this->cadenaC;
+    this->cadenaC = cadenaC;
 
     return *this;
 }
@@ -127,19 +134,26 @@ char& Cadena::operator[](unsigned indice)
 }
 
 
-
 const char& Cadena::operator[](unsigned indice) const
 {
     return this->cadenaC[indice];
 }
 
 
-/*
+
 const char* Cadena::getCadena() const
 {
-
+    return this->cadenaC;
 }
-int Cadena::getLongitud() const;*/
+
+
+
+int Cadena::getLongitud() const
+{
+    return strlen(this->cadenaC);
+}
+
+
 
 ///METODOS STATIC///
 int Cadena::cantDigitos(int num)
@@ -156,6 +170,7 @@ int Cadena::cantDigitos(int num)
 ///METODOS FRIEND///
 ostream& operator <<(ostream& os, const Cadena& cadena)
 {
+
     os << cadena.cadenaC << endl;
 
     return os;
@@ -173,6 +188,7 @@ istream& operator >>(istream& is, Cadena& cadena)
 
     delete [] cadena.cadenaC;
     cadena.cadenaC = new char[colaChars.size() + 1];
+
 
     int i=0;
     while(!colaChars.empty())

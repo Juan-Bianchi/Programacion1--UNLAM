@@ -1,3 +1,12 @@
 # depslib dependency file v1.0
 1663972151 source:c:\users\juan\desktop\codificaciones-progra1\progra1\merge\merge.c
 
+1664678884 source:c:\users\juan\desktop\codificaciones-progra1\progra1\merge\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Merge.h"
+
+1664671290 c:\users\juan\desktop\codificaciones-progra1\progra1\merge\merge.h
+	<stdbool.h>
+

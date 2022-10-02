@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string.h>
 #include <queue>
+#include <stdio.h>
 
 using namespace std;
 
@@ -43,7 +44,6 @@ public:
     friend Cadena operator +(const Cadena& cad1, const Cadena& cad2);           ///uno de los dos objetos tiene que ser de la clase cadena. Si uno lo es, tratará de convertir al otro, no importa de que lado del operador esté.
 
 };
-
 
 
 

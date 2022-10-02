@@ -1,6 +1,8 @@
 #ifndef MERGE_H_INCLUDED
 #define MERGE_H_INCLUDED
 
+#include<stdbool.h>
+
 typedef struct
 {
     char codigo[11];
@@ -19,9 +21,11 @@ typedef struct
 {
     char codig[11];
     char desc[11];
-} Idx;
+    float precio;
+} BaseDatosProd;
 
-int (*Cmp)(const void* elem1, const void* elem2);
+typedef char Idx[11];
+
 
 
 
