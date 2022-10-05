@@ -18,40 +18,34 @@ Punto::Punto()
 
 Punto::Punto(int coordX, int coordY)
 {
-    if(coordX<0)
-        this->coordX = 1024 + coordX;
-    else
-    {
-        if(coordX>1023)
-            this->coordX = coordX - 1024;
-        else
-            this->coordX = coordX;
-    }
+    this->coordX = coordX;
 
-    if(coordY<0)
+    while(coordX<0)
+        this->coordX = 1024 + coordX;
+
+    while(coordX>1023)
+        this->coordX = coordX - 1024;
+
+    this->coordY = coordY;
+
+    while(coordY<0)
         this->coordY = 767 + coordY;
-    else
-    {
-        if(coordY>767)
-            this->coordY = coordY - 768;
-        else
-            this->coordY = coordY;
-    }
+
+    while(coordY>767)
+        this->coordY = coordY - 768;
 }
 
 
 
 Punto::Punto(int coordX)
 {
-    if(coordX<0)
+    this->coordX = coordX;
+
+    while(coordX<0)
         this->coordX = 1024 + coordX;
-    else
-    {
-        if(coordX>1023)
-            this->coordX = coordX - 1024;
-        else
-            this->coordX = coordX;
-    }
+
+    while(coordX>1023)
+        this->coordX = coordX - 1024;
 
     if(coordX == 0)
         this->coordY = 0;
@@ -85,10 +79,10 @@ Punto& Punto::operator +=(Punto& p)
     this->coordX += p.coordX;
     this->coordY += p.coordY;
 
-    if(this->coordX > 1023)
+    while(this->coordX > 1023)
         this->coordX = this->coordX - 1024;
 
-    if(this->coordY > 767)
+    while(this->coordY > 767)
         this->coordY = this->coordY - 768;
 
     return *this;
@@ -101,10 +95,10 @@ Punto& Punto::operator +=(int desp)
     this->coordX += desp;
     this->coordY += desp;
 
-    if(this->coordX > 1023)
+    while(this->coordX > 1023)
         this->coordX = this->coordX - 1024;
 
-    if(this->coordY > 767)
+    while(this->coordY > 767)
         this->coordY = this->coordY - 768;
 
     return *this;
@@ -117,10 +111,10 @@ Punto& Punto::operator -=(Punto& p)
     this->coordX -= p.coordX;
     this->coordY -= p.coordY;
 
-    if(this->coordX < 0)
+    while(this->coordX < 0)
         this->coordX = 1024 + this->coordX;
 
-    if(this->coordY < 0)
+    while(this->coordY < 0)
         this->coordY = 768 + this->coordY;
 
     return *this;
@@ -133,10 +127,10 @@ Punto& Punto::operator -=(int desp)
     this->coordX -= desp;
     this->coordY -= desp;
 
-    if(this->coordX < 0)
+    while(this->coordX < 0)
         this->coordX = 1024 + this->coordX;
 
-    if(this->coordY < 0)
+    while(this->coordY < 0)
         this->coordY = 768 + this->coordY;
 
     return *this;

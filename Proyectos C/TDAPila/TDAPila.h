@@ -2,6 +2,8 @@
 #define TDA_PILA_H
 
 #include<stdlib.h>
+#include<stdbool.h>
+
 
 typedef int Pila;
 
@@ -11,6 +13,6 @@ bool desapilar(Pila* pila, void* elem, size_t tamElem);
 bool topeDePila(const Pila* pila, void* elem, size_t tamElem);
 bool pilaVacia(const Pila* pila);
 bool pilaLlena(const Pila* pila, size_t tamElem);
-void vaciarPila(const Pila* pila);
+void vaciarPila(Pila* pila);
 
 #endif // TDA_PILA_H
