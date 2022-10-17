@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1665972533 source:c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tdacolaestatica\tdacolaestatica.c
+	<memory.h>
+	"../TDACola/TDACola.h"
+
+1665967619 c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tdacola\tdacola.h
+	<stdbool.h>
+	"../TDAColaEstatica/TDAColaEstatica.h"
+	"../TDAColaDinamica/TDAColaDinamica.h"
+	<stdlib.h>
+
+1665966329 c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tdacolaestatica\tdacolaestatica.h
+	<stdlib.h>
+

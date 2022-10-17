@@ -1,0 +1,29 @@
+# depslib dependency file v1.0
+1584205420 source:e:\codificaciones-progra1\progra1\proyectos c\tdapilaestatica\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1665013442 source:e:\codificaciones-progra1\progra1\proyectos c\tdapilaestatica\pilaestatica.c
+	"../TDAPilaEstatica/PilaEstatica.h"
+
+1665013062 e:\codificaciones-progra1\progra1\proyectos c\tdapilaestatica\pilaestatica.h
+	<stdlib.h>
+	<stdbool.h>
+	<string.h>
+
+1584205420 source:c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tdapilaestatica\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1665077698 source:c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tdapilaestatica\pilaestatica.c
+	"../TDAPila/TDAPila.h"
+
+1665078030 c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tdapilaestatica\pilaestatica.h
+	<stdlib.h>
+	<stdbool.h>
+	<string.h>
+
+1665076627 c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tdapila\tdapila.h
+	<stdlib.h>
+	"../TDAPilaEstatica/PilaEstatica.h"
+

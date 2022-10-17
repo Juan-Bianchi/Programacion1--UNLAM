@@ -14,6 +14,7 @@ class Cadena
 private:
     char* cadenaC;
     static int cantDigitos(int num);
+    Cadena(char* CadenaC);
 
 
 public:

@@ -41,6 +41,15 @@ Cadena::Cadena(const Cadena& otra)
 
 
 
+///constructor privado
+
+Cadena::Cadena(char* cadenaC)
+{
+    this->cadenaC = cadenaC;
+}
+
+
+
 Cadena::~Cadena()
 {
     delete[] this->cadenaC;
@@ -205,6 +214,7 @@ istream& operator >>(istream& is, Cadena& cadena)
 
 
 
+/* Version sin constructor privado
 Cadena operator +(const Cadena& cad1, const Cadena& cad2)
 {
     Cadena cadConcat;
@@ -217,5 +227,13 @@ Cadena operator +(const Cadena& cad1, const Cadena& cad2)
 
     return cadConcat;
 }
+*/
 
+Cadena operator +(const Cadena& cad1, const Cadena& cad2)
+{
+    char* cadenaConcat = new char[strlen(cad1.cadenaC) + strlen(cad2.cadenaC) + 1];
+    strcpy(cadenaConcat, cad1.cadenaC);
+    strcat(cadenaConcat, cad2.cadenaC);
 
+    return Cadena(cadenaConcat);
+}

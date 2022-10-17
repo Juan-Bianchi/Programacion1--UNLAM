@@ -1,0 +1,23 @@
+# depslib dependency file v1.0
+1665850255 source:c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\sumarpila\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<stdbool.h>
+	"../TDAPila/TDAPila.h"
+
+1665078089 c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tdapilaestatica\pilaestatica.h
+	<stdlib.h>
+	<stdbool.h>
+	<string.h>
+
+1665849731 c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tdapila\tdapila.h
+	<stdlib.h>
+	"../TDAPilaEstatica/PilaEstatica.h"
+	"../TDAPilaDinamica/PilaDinamica.h"
+
+1665848035 c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tdapiladinamica\piladinamica.h
+	<stdlib.h>
+	<memory.h>
+	<stdbool.h>
+
