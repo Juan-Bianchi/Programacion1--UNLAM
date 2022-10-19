@@ -2,21 +2,22 @@
 #include <stdlib.h>
 #include <string.h>
 
+//#define TDA_IMPLEMENTACION_ESTATICA
+#include "Cola.h"
 
-#define TDA_PILA_ESTATICA
-#include "Pila.h"
 
 int comparaEntero(const void* elem1, const void* elem2);
 int comparaFloat(const void* elem1, const void* elem2);
-bool cargaArchivoEnPila(Pila* pp, FILE* arch);
+bool cargaArchivoEnCola(Cola* pc, FILE* arch);
 void mostrarMenu();
 int validaIntEntre(const int inf, const int sup, Cmp cmp);
 float validaFloatMayorA(float inf, Cmp cmp);
 int validaIntMayA(const int inf, Cmp cmp);
 void mostrarProd(const void* elem);
-int realizarAcciones(Pila* pp);
-bool cargarPilaEnArch(Pila* pp, FILE* arch);
+int realizarAcciones(Cola* pc);
+bool cargarColaEnArch(Cola* pc, FILE* arch);
 void mostrarArchivo(FILE* arch);
+
 
 
 int main(int argc, char* argv[])
@@ -36,7 +37,7 @@ int main(int argc, char* argv[])
                         {"BC2017", "Remera", "BC", f1, f2, 7, 1100, 1600},
                        };
     FILE* arch;
-    Pila pilaProd;
+    Cola colaProd;
 
 
     arch = fopen(argv[1], argv[2]);
@@ -46,14 +47,15 @@ int main(int argc, char* argv[])
         return -1;
     }
 
-    crearPila(&pilaProd);
+    crearCola(&colaProd);
+
     fwrite(vec, sizeof(Producto), 10, arch);
-    if(!cargaArchivoEnPila(&pilaProd, arch))
+    if(!cargaArchivoEnCola(&colaProd, arch))
     {
-        puts("La pila no ha podido ser cargada desde el archivo. Se procederá al cierre del programa.");
+        puts("La cola no ha podido ser cargada desde el archivo. Se procederá al cierre del programa.");
         return -1;
     }
-    puts("Se cargó positivamente el archivo en la pila. A continuación se procederá a realizar modificaciones: \n");
+    puts("Se cargó positivamente el archivo en la cola. A continuación se procederá a realizar modificaciones: \n");
     fclose(arch);
 
     arch = fopen(argv[4], argv[2]);
@@ -64,12 +66,12 @@ int main(int argc, char* argv[])
     }
 
     mostrarMenu();
-    realizarAcciones(&pilaProd);
+    realizarAcciones(&colaProd);
 
 
-    if(!cargarPilaEnArch(&pilaProd, arch))
+    if(!cargarColaEnArch(&colaProd, arch))
     {
-        puts("No se ha podido cargar la pila en el archivo. Se eliminará el archivo ya que esta vacío.");
+        puts("No se ha podido cargar la cola en el archivo. Se eliminará el archivo ya que esta vacío.");
         fclose(arch);
         remove(argv[4]);
         return -1;
@@ -85,16 +87,16 @@ int main(int argc, char* argv[])
     return 0;
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-bool cargaArchivoEnPila(Pila* pp, FILE* arch)
+
+bool cargaArchivoEnCola(Cola* pc, FILE* arch)
 {
     Producto prod;
     short int cont = 0;
 
     fseek(arch, 0L, SEEK_SET);
     fread(&prod, sizeof(Producto), 1, arch);
-    while(!feof(arch) && apilar(pp, &prod, sizeof(Producto)))
+    while(!feof(arch) && encolar(pc, &prod, sizeof(Producto)))
     {
         printf("Producto %d cargado.\n", ++cont);
         fread(&prod, sizeof(Producto), 1, arch);
@@ -109,12 +111,12 @@ bool cargaArchivoEnPila(Pila* pp, FILE* arch)
 
 void mostrarMenu()
 {
-    printf("1- Cargar información.\n2- Ver Tope de Pila.\n3- Desapilar.\n4- Salir del Menú.\n\nIngrese su opción: ");
+    printf("1- Cargar información.\n2- Ver Frente de Cola.\n3- Desencolar.\n4- Salir del Menú.\n\nIngrese su opción: ");
 }
 
 
 
-int realizarAcciones(Pila* pp)
+int realizarAcciones(Cola* pc)
 {
     int cod;
     Producto prod;
@@ -157,14 +159,14 @@ int realizarAcciones(Pila* pp)
             printf("Ingrese stock (mayor a -1): ");
             prod.cant = validaIntMayA(-1, comparaEntero);
 
-            apilar(pp, &prod, sizeof(Producto));
+            encolar(pc, &prod, sizeof(Producto));
             puts("Producto apilado: ");
             mostrarProd(&prod);
         }
 
         if(cod == 2)
         {
-            if(!verTopePila(pp, &prod, sizeof(Producto)))
+            if(!verFrenteCola(pc, &prod, sizeof(Producto)))
                 puts("No se pudo ver el tope de la pila.");
             puts("El tope de la pila es el siguiente: ");
             mostrarProd(&prod);
@@ -172,7 +174,7 @@ int realizarAcciones(Pila* pp)
 
         if(cod == 3)
         {
-            if(!desapilar(pp, &prod, sizeof(Producto)))
+            if(!desencolar(pc, &prod, sizeof(Producto)))
                 puts("No se pudo desapilar el elemento.");
             puts("El elemento desapilado es: ");
             mostrarProd(&prod);
@@ -186,14 +188,14 @@ int realizarAcciones(Pila* pp)
 
 
 
-bool cargarPilaEnArch(Pila* pp, FILE* arch)
+bool cargarColaEnArch(Cola* pc, FILE* arch)
 {
     Producto prod;
 
-    if(pilaVacia(pp))
+    if(colaVacia(pc))
         return false;
 
-    while(desapilar(pp, &prod, sizeof(Producto)))
+    while(desencolar(pc, &prod, sizeof(Producto)))
         fwrite(&prod, sizeof(Producto), 1, arch);
 
     return true;
@@ -292,5 +294,5 @@ int validaIntEntre(const int inf, const int sup, Cmp cmp)
 
 void mostrarProd(const void* elem)
 {
-    printf("Código: %s\nDescripción: %s\nProveedor: %s\nFecha compra: %2d/%2d/%4d\nFecha vencimiento: %2d/%2d/%4d\nPrecio compra: $%.2f\nPrecio venta: $%.2f\nCantidad: %d un\n\n", ((Producto*)elem)->cod, ((Producto*)elem)->desc, ((Producto*)elem)->prov, ((Producto*)elem)->fechaCompra.dia, ((Producto*)elem)->fechaCompra.mes, ((Producto*)elem)->fechaCompra.anio, ((Producto*)elem)->fechaVenc.dia, ((Producto*)elem)->fechaVenc.mes, ((Producto*)elem)->fechaVenc.anio, ((Producto*)elem)->precComp, ((Producto*)elem)->precVent, ((Producto*)elem)->cant);
+    printf("Código: %s\nDescripción: %s\nProveedor: %s\nFecha compra: %2d/%2d/%4d\nFecha venta: %2d/%2d/%4d\nPrecio compra: $%.2f\nPrecio vencimiento: $%.2f\nCantidad: %d un\n\n", ((Producto*)elem)->cod, ((Producto*)elem)->desc, ((Producto*)elem)->prov, ((Producto*)elem)->fechaCompra.dia, ((Producto*)elem)->fechaCompra.mes, ((Producto*)elem)->fechaCompra.anio, ((Producto*)elem)->fechaVenc.dia, ((Producto*)elem)->fechaVenc.mes, ((Producto*)elem)->fechaVenc.anio, ((Producto*)elem)->precComp, ((Producto*)elem)->precVent, ((Producto*)elem)->cant);
 }
