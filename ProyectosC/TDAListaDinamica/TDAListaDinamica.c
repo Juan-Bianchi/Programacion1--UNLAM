@@ -199,7 +199,7 @@ void ordenarListaSeleccion(Lista* pl, Cmp cmp)
 
 void ordenarListaInsercion(Lista* pl, Cmp cmp)
 {
-    Lista listOrd;
+    Lista listOrd = NULL;
     Lista* ultListOrd;
     Nodo* nodo;
 

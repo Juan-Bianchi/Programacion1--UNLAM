@@ -1,0 +1,10 @@
+Código           Descripción  Fecha compra   Fecha vencimiento     Precio compra      Precio venta   Cantidad
+BC1201                Walker      1/ 1/2022           1/ 3/2022          1000.00          1500.50      20 un
+
+BC1201               Muslera      1/ 1/2022           1/ 2/2022           150.00           250.50      50 un
+
+Código           Descripción  Fecha compra   Fecha vencimiento     Precio compra      Precio venta   Cantidad
+BC1302              Gemelera      1/ 1/2022           1/ 5/2022           350.50           800.00      56 un
+
+BC1302                  Faja      1/ 1/2022          20/ 1/2022           100.50           500.50      40 un
+
