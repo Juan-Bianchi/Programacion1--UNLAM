@@ -1,0 +1,29 @@
+# depslib dependency file v1.0
+1666231596 source:c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tp3\testtp3-ej11\main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+	"Cola.h"
+
+1666215796 source:c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tp3\testtp3-ej11\cola.c
+	"Cola.h"
+	<memory.h>
+
+1666214166 c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tp3\testtp3-ej11\cola.h
+	<stdlib.h>
+	<stdbool.h>
+
+1666215796 source:e:\codificaciones-progra1\progra1\proyectosc\tp3\testtp3-ej11\cola.c
+	"Cola.h"
+	<memory.h>
+
+1666214166 e:\codificaciones-progra1\progra1\proyectosc\tp3\testtp3-ej11\cola.h
+	<stdlib.h>
+	<stdbool.h>
+
+1666218532 source:e:\codificaciones-progra1\progra1\proyectosc\tp3\testtp3-ej11\main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+	"Cola.h"
+

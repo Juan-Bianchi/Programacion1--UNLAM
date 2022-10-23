@@ -20,3 +20,24 @@
 	<stdbool.h>
 	<ctype.h>
 
+1664677904 source:c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tp2\testtp2-ej9-10-11\main.c
+	<stdio.h>
+	<stdlib.h>
+	"../../Cadenas/Cadenas.h"
+	"../TP2-FuncionesConArchivos/Archivos.h"
+
+1663190362 c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\cadenas\cadenas.h
+	<stdio.h>
+	<string.h>
+	<stdlib.h>
+	<ctype.h>
+	<stdbool.h>
+	"Palabra.h"
+
+1663624050 c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\cadenas\palabra.h
+	<stdbool.h>
+	<ctype.h>
+
+1663454239 c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tp2\tp2-funcionesconarchivos\archivos.h
+	<stdio.h>
+

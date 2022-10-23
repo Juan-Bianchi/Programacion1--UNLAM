@@ -1,0 +1,28 @@
+# depslib dependency file v1.0
+1666320817 source:c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tp3\testtp3-ej12\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Pila.h"
+	"Cola.h"
+
+1666237875 source:c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tp3\testtp3-ej12\pila.c
+	"Pila.h"
+	<memory.h>
+
+1666300537 c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tp3\testtp3-ej12\pila.h
+	<stdlib.h>
+	<stdbool.h>
+	"../../TP1/TP1-TipoFecha/Fecha.h"
+	<memory.h>
+
+1666299380 source:c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tp3\testtp3-ej12\cola.c
+	"Cola.h"
+
+1666299380 c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tp3\testtp3-ej12\cola.h
+	"Pila.h"
+
+1661297942 c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tp1\tp1-tipofecha\fecha.h
+	<stdio.h>
+	<stdlib.h>
+

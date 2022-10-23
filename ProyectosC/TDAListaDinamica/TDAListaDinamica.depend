@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1666410171 source:c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tdalistadinamica\tdalistadinamica.c
+	"TDAListaDinamica.h"
+	<memory.h>
+
+1666463926 c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tdalistadinamica\tdalistadinamica.h
+	<stdlib.h>
+	<stdbool.h>
+	"../Nodo/Nodo.h"
+
+1666409807 c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\nodo\nodo.h
+	<stdlib.h>
+	<memory.h>
+

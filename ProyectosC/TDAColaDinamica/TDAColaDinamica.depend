@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1666221776 source:c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tdacoladinamica\tdacoladinamica.c
+	"TDAColaDinamica.h"
+	<memory.h>
+
+1666221570 c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tdacoladinamica\tdacoladinamica.h
+	<stdlib.h>
+	<stdbool.h>
+
