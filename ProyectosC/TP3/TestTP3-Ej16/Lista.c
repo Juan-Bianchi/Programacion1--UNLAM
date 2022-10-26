@@ -1,6 +1,7 @@
 #include "Lista.h"
 #include <memory.h>
 
+
 Nodo* crearNodo(const void* elem, size_t tamElem)
 {
     Nodo* nue = (Nodo*)malloc(sizeof(Nodo));
@@ -39,7 +40,7 @@ void crearLista(Lista* pl)
 
 
 
-int insertarElementoEnListaDesordConDup(Lista* pl, const void* elem, size_t tamElem)
+int insertarAlFinalListaDesord(Lista* pl, const void* elem, size_t tamElem)
 {
     Nodo* nue = crearNodo(elem, tamElem);
 
@@ -57,10 +58,26 @@ int insertarElementoEnListaDesordConDup(Lista* pl, const void* elem, size_t tamE
 
 
 
+bool eliminarDeListaDesord(Lista* pl, void* elem, size_t tamElem)
+{
+    Nodo* nae;
+
+    if(*pl)
+        return false;
+
+    nae = *pl;
+    *pl = nae->sig;
+
+    destruirNodo(nae, elem, tamElem);
+
+    return true;
+}
+
+
 void ordenarListaInsercion(Lista* pl, Cmp cmp)
 {
     Lista listOrd = NULL;
-    Lista* finLOrd;
+    Lista* pUltListOrd;
     Nodo* nodo;
 
     while(*pl)
@@ -68,12 +85,12 @@ void ordenarListaInsercion(Lista* pl, Cmp cmp)
         nodo = *pl;
         *pl = nodo->sig;
 
-        finLOrd = &listOrd;
-        while(*finLOrd && cmp(nodo->elem, (*finLOrd)->elem) > 0)
-            finLOrd = &(*finLOrd)->sig;
+        pUltListOrd = &listOrd;
+        while(*pUltListOrd && cmp(nodo->elem, (*pUltListOrd)->elem) > 0)
+            pUltListOrd = &(*pUltListOrd)->sig;
 
-        nodo->sig = *finLOrd;
-        *finLOrd = nodo;
+        nodo->sig = *pUltListOrd;
+        *pUltListOrd = nodo;
     }
     *pl = listOrd;
 }

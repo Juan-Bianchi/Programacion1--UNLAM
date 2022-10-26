@@ -15,15 +15,21 @@
 	<stdio.h>
 	<stdlib.h>
 
-1665077698 source:c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tdapilaestatica\pilaestatica.c
+1665681724 source:c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tdapilaestatica\pilaestatica.c
 	"../TDAPila/TDAPila.h"
 
-1665078030 c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tdapilaestatica\pilaestatica.h
+1665078089 c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tdapilaestatica\pilaestatica.h
 	<stdlib.h>
 	<stdbool.h>
 	<string.h>
 
-1665076627 c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tdapila\tdapila.h
+1665849731 c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tdapila\tdapila.h
 	<stdlib.h>
 	"../TDAPilaEstatica/PilaEstatica.h"
+	"../TDAPilaDinamica/PilaDinamica.h"
+
+1665848035 c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tdapiladinamica\piladinamica.h
+	<stdlib.h>
+	<memory.h>
+	<stdbool.h>
 

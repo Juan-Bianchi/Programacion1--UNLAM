@@ -5,14 +5,10 @@
 #include <stdbool.h>
 #include "../../TP1/TP1-TipoFecha/Fecha.h"
 
-#define min(a,b)    ((a)<(b)?(a):(b))
-#define TODO_OK 0
 #define SIN_MEM 1
+#define TODO_OK 0
+#define min(a,b)    ((a)<(b)?(a):(b))
 
-
-int typedef (*Cmp)(const void* elem1, const void* elem2);
-void typedef (*Accion)(void* elem, void* datosAccion);
-void typedef (*Mostrar)(const void* elem);
 
 typedef struct sNodo
 {
@@ -21,14 +17,23 @@ typedef struct sNodo
     struct sNodo* sig;
 } Nodo;
 
+typedef Nodo* Lista;
+
+int typedef (*Cmp)(const void* elem1, const void* elem2);
+void typedef (*Accion)(void* elem, void* datosAccion);
+
 Nodo* crearNodo(const void* elem, size_t tamElem);
 void destruirNodo(Nodo* nae, void* elem, size_t tamElem);
 
-typedef Nodo* Lista;
 
 void crearLista(Lista* pl);
-int insertarElementoEnListaDesordConDup(Lista* pl, const void* elem, size_t tamElem);
+int insertarAlFinalListaDesord(Lista* pl, const void* elem, size_t tamElem);
+bool eliminarDeListaDesord(Lista* pl, void* elem, size_t tamElem);
 void ordenarListaInsercion(Lista* pl, Cmp cmp);
+
+
+
+
 
 
 

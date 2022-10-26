@@ -1,0 +1,35 @@
+# depslib dependency file v1.0
+1666535513 source:c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tp3\testtp3-ej17\lista.c
+	"Lista.h"
+	<memory.h>
+
+1666535493 c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tp3\testtp3-ej17\lista.h
+	<stdlib.h>
+	<stdbool.h>
+	"../../TP1/TP1-TipoFecha/Fecha.h"
+
+1661297942 c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tp1\tp1-tipofecha\fecha.h
+	<stdio.h>
+	<stdlib.h>
+
+1666541815 source:c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tp3\testtp3-ej17\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Lista.h"
+
+1666535513 source:c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tp3\testtp3-ej16\lista.c
+	"Lista.h"
+	<memory.h>
+
+1666535493 c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tp3\testtp3-ej16\lista.h
+	<stdlib.h>
+	<stdbool.h>
+	"../../TP1/TP1-TipoFecha/Fecha.h"
+
+1666541815 source:c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tp3\testtp3-ej16\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Lista.h"
+

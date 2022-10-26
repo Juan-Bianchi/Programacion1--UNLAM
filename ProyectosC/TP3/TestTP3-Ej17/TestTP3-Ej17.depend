@@ -1,9 +1,9 @@
 # depslib dependency file v1.0
-1666535513 source:c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tp3\testtp3-ej17\lista.c
+1666650031 source:c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tp3\testtp3-ej17\lista.c
 	"Lista.h"
 	<memory.h>
 
-1666535493 c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tp3\testtp3-ej17\lista.h
+1666649342 c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tp3\testtp3-ej17\lista.h
 	<stdlib.h>
 	<stdbool.h>
 	"../../TP1/TP1-TipoFecha/Fecha.h"
@@ -12,9 +12,10 @@
 	<stdio.h>
 	<stdlib.h>
 
-1666541815 source:c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tp3\testtp3-ej17\main.c
+1666747130 source:c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tp3\testtp3-ej17\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
+	<ctype.h>
 	"Lista.h"
 
