@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1584205422 source:c:\users\juan\desktop\codificaciones-progra1\progra1\tcp-cpp\complejo\main.c
+
+1667010097 source:c:\users\juan\desktop\codificaciones-progra1\progra1\tcp-cpp\complejo\complejo.cpp
+	"Complejo.h"
+
+1667010048 c:\users\juan\desktop\codificaciones-progra1\progra1\tcp-cpp\complejo\complejo.h
+	<iostream>
+

@@ -1,10 +1,12 @@
 # depslib dependency file v1.0
-1664566837 source:c:\users\juan\desktop\codificaciones-progra1\progra1\tcp-cpp\cadena\cadena.cpp
+1665855720 source:c:\users\juan\desktop\codificaciones-progra1\progra1\tcp-cpp\cadena\cadena.cpp
 	"Cadena.h"
 
-1664566737 c:\users\juan\desktop\codificaciones-progra1\progra1\tcp-cpp\cadena\cadena.h
+1665850910 c:\users\juan\desktop\codificaciones-progra1\progra1\tcp-cpp\cadena\cadena.h
 	<iostream>
 	<string.h>
+	<queue>
+	<stdio.h>
 
 1664646700 source:c:\users\laboratorios.unlmlab\desktop\cadena\cadena.cpp
 	"Cadena.h"
