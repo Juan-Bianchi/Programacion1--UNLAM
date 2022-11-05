@@ -6,7 +6,12 @@
 #include <queue>
 #include <stdio.h>
 
+
+#define es_letra(a)  (((a) >= 'A' && (a) <= 'Z') || ((a) >= 'a' && (a) <= 'z') || (a) == '·' || (a) == 'È' || (a) == 'Ì' || (a) == 'Û' || (a) == '˙' || (a) == '¸' || (a) == 'Ò' || (a) == '¡' || (a) == '…' || (a) == 'Õ' || (a) == '”' || (a) == '⁄' || (a) == '‹' || (a) == '—')
+
 using namespace std;
+
+class Fecha;
 
 
 class Cadena
@@ -25,7 +30,7 @@ public:
 
     Cadena(const Cadena& otra);                                 ///constructor de copia que recibe objeto cadena
     ~Cadena();                                                  ///destructor
-    Cadena& operator =(const Cadena& otra);                     ///sobrecarga de asignaci√≥n
+    Cadena& operator =(const Cadena& otra);                     ///sobrecarga de asignaciÛn
 
     Cadena& operator +=(const Cadena& cadena);
 
@@ -40,10 +45,17 @@ public:
 
     const char* getCadena() const;
     int getLongitud() const;
+    const Cadena toUpperCase()const;
+    const Cadena toLowerCase()const;
+    const Cadena firstCharToUpperCase()const;
+    vector<Cadena> split(char separador)const;
+    unsigned toUnsigned()const;
+    Fecha toFecha()const;
+    int toInt()const;
 
     friend ostream& operator <<(ostream& os, const Cadena& cadena);
     friend istream& operator >>(istream& is, Cadena& cadena);
-    friend Cadena operator +(const Cadena& cad1, const Cadena& cad2);           ///uno de los dos objetos tiene que ser de la clase cadena. Si uno lo es, tratar√° de convertir al otro, no importa de que lado del operador est√©.
+    friend Cadena operator +(const Cadena& cad1, const Cadena& cad2);           ///uno de los dos objetos tiene que ser de la clase cadena. Si uno lo es, tratar· de convertir al otro, no importa de que lado del operador estÈ.
 
 };
 

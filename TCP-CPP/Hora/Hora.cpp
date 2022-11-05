@@ -1,21 +1,9 @@
 #include "Hora.h"
 
-Hora::Hora()
-{
-    this->segRel = 1;
-}
-
-
 
 Hora::Hora(int seg, int minut, int horas)
 {
     setHoraRelativa(seg, minut, horas);
-}
-
-
-Hora::Hora(Hora& hor)
-{
-    this->segRel = hor.segRel;
 }
 
 

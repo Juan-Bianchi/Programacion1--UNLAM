@@ -1,0 +1,36 @@
+# depslib dependency file v1.0
+1667596096 source:c:\users\juan\desktop\codificaciones-progra1\progra1\tcp-cpp\persona\personaexception.cpp
+	"PersonaException.h"
+
+1667596225 c:\users\juan\desktop\codificaciones-progra1\progra1\tcp-cpp\persona\personaexception.h
+	"../Cadena/Cadena.h"
+
+1667675682 c:\users\juan\desktop\codificaciones-progra1\progra1\tcp-cpp\cadena\cadena.h
+	<iostream>
+	<string.h>
+	<queue>
+	<stdio.h>
+
+1667668572 source:c:\users\juan\desktop\codificaciones-progra1\progra1\tcp-cpp\persona\personabuilder.cpp
+	"PersonaBuilder.h"
+	"PersonaException.h"
+
+1667612267 c:\users\juan\desktop\codificaciones-progra1\progra1\tcp-cpp\persona\personabuilder.h
+	"../Cadena/Cadena.h"
+	"../Fecha/Fecha.h"
+	"Persona.h"
+	<iostream>
+
+1667674383 c:\users\juan\desktop\codificaciones-progra1\progra1\tcp-cpp\fecha\fecha.h
+	<iostream>
+
+1667678202 c:\users\juan\desktop\codificaciones-progra1\progra1\tcp-cpp\persona\persona.h
+	"../Cadena/Cadena.h"
+	"../Fecha/Fecha.h"
+
+1667678272 source:c:\users\juan\desktop\codificaciones-progra1\progra1\tcp-cpp\persona\persona.cpp
+	"Persona.h"
+	"PersonaException.h"
+	"../Cadena/Cadena.h"
+	<iostream>
+

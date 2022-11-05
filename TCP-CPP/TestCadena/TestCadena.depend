@@ -1,12 +1,13 @@
 # depslib dependency file v1.0
-1664588752 source:c:\users\juan\desktop\codificaciones-progra1\progra1\tcp-cpp\testcadena\main.cpp
+1667681493 source:c:\users\juan\desktop\codificaciones-progra1\progra1\tcp-cpp\testcadena\main.cpp
 	<iostream>
 	<stdlib.h>
 	<fstream>
 	"../Cadena/Cadena.h"
 
-1664578592 c:\users\juan\desktop\codificaciones-progra1\progra1\tcp-cpp\cadena\cadena.h
+1667675682 c:\users\juan\desktop\codificaciones-progra1\progra1\tcp-cpp\cadena\cadena.h
 	<iostream>
 	<string.h>
 	<queue>
+	<stdio.h>
 

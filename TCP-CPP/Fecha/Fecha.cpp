@@ -1,5 +1,6 @@
 #include "Fecha.h"
 #include "fechainvalidaexception.h"
+#include "../Cadena/Cadena.h"
 
 
 int Fecha::cantDM[13]={0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
@@ -99,6 +100,20 @@ Fecha::Fecha()
 
 Fecha::Fecha(int dia, int mes, int anio)
 {
+    setDma(dia, mes, anio);
+}
+
+
+Fecha::Fecha(const Cadena& cad)
+{
+    int dia, mes, anio;
+
+    vector<Cadena> campos = cad.split('/');
+
+    dia = campos[0].toInt();
+    mes = campos[1].toInt();
+    anio = campos[2].toInt();
+
     setDma(dia, mes, anio);
 }
 
@@ -237,13 +252,13 @@ Fecha Fecha::operator --(int)
 
 
 
-ostream& operator << (ostream& os, Fecha& fecha)
+ostream& operator << (ostream& os, const Fecha& fecha)
 {
     int dia, mes, anio;
 
     fecha.getDma(dia, mes, anio);
 
-    os << dia << "/" << mes << "/" << anio << endl;
+    os << dia << "/" << mes << "/" << anio;
 
     return os;
 }

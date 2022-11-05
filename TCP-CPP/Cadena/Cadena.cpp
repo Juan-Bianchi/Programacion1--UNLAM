@@ -1,4 +1,5 @@
 #include "Cadena.h"
+#include "../Fecha/Fecha.h"
 
 Cadena::Cadena()
 {
@@ -165,6 +166,173 @@ int Cadena::getLongitud() const
 
 
 
+const Cadena Cadena::toUpperCase()const
+{
+    Cadena cadNormalizada(*this);
+    char* posicion = cadNormalizada.cadenaC;
+
+    while(*posicion)
+    {
+        if(*posicion >= 'a' && *posicion <= 'z')
+            *posicion -= 32;
+        if(*posicion == 'á')
+            *posicion = 'Á';
+        if(*posicion == 'é')
+            *posicion = 'É';
+        if(*posicion == 'í')
+            *posicion = 'Í';
+        if(*posicion == 'ó')
+            *posicion = 'Ó';
+        if(*posicion == 'ú')
+            *posicion = 'Ú';
+        if(*posicion == 'ñ')
+            *posicion = 'Ñ';
+        if(*posicion == 'ü')
+            *posicion = 'Ü';
+
+        posicion ++;
+    }
+
+    return cadNormalizada;
+}
+
+
+
+const Cadena Cadena::toLowerCase()const
+{
+    Cadena cadNormalizada(*this);
+    char* posicion = cadNormalizada.cadenaC;
+
+    while(*posicion)
+    {
+        if(*posicion >= 'A' && *posicion <= 'Z')
+            *posicion += 32;
+        if(*posicion == 'Á')
+            *posicion = 'á';
+        if(*posicion == 'É')
+            *posicion = 'é';
+        if(*posicion == 'Í')
+            *posicion = 'í';
+        if(*posicion == 'Ó')
+            *posicion = 'ó';
+        if(*posicion == 'Ú')
+            *posicion = 'ú';
+        if(*posicion == 'Ñ')
+            *posicion = 'ñ';
+        if(*posicion == 'Ü')
+            *posicion = 'ü';
+
+        posicion++;
+    }
+
+    return cadNormalizada;
+}
+
+
+
+const Cadena Cadena::firstCharToUpperCase()const
+{
+    Cadena cadNormalizada(*this);
+    char* posicion = cadNormalizada.cadenaC;
+
+    while(*posicion)
+    {
+        if( (posicion == cadenaC && es_letra(*posicion)) || (posicion != cadenaC && !es_letra(*(posicion-1)) && es_letra(*posicion)) )
+        {
+            if(*posicion >= 'a' && *posicion <= 'z')
+                *posicion -= 32;
+            if(*posicion == 'á')
+                *posicion = 'Á';
+            if(*posicion == 'é')
+                *posicion = 'É';
+            if(*posicion == 'í')
+                *posicion = 'Í';
+            if(*posicion == 'ó')
+                *posicion = 'Ó';
+            if(*posicion == 'ú')
+                *posicion = 'Ú';
+            if(*posicion == 'ñ')
+                *posicion = 'Ñ';
+            if(*posicion == 'ü')
+                *posicion = 'Ü';
+        }
+        else
+        {
+            if(*posicion >= 'A' && *posicion <= 'Z')
+                *posicion += 32;
+            if(*posicion == 'Á')
+                *posicion = 'á';
+            if(*posicion == 'É')
+                *posicion = 'é';
+            if(*posicion == 'Í')
+                *posicion = 'í';
+            if(*posicion == 'Ó')
+                *posicion = 'ó';
+            if(*posicion == 'Ú')
+                *posicion = 'ú';
+            if(*posicion == 'Ñ')
+                *posicion = 'ñ';
+            if(*posicion == 'Ü')
+                *posicion = 'ü';
+        }
+
+        posicion++;
+    }
+    return cadNormalizada;
+}
+
+
+
+vector<Cadena> Cadena::split(char separador)const
+{
+    vector<Cadena> campos;
+    char* iniCampo = this->cadenaC;
+    char* finCampo = strchr(iniCampo, separador);
+
+    while(finCampo)
+    {
+        *finCampo = '\0';
+        campos.push_back(Cadena((const char*) iniCampo));
+
+        *finCampo = separador;
+        iniCampo = finCampo + 1;
+        finCampo = strchr(iniCampo, separador);
+    }
+
+    campos.push_back(Cadena((const char*) iniCampo));
+
+    return campos;
+}
+
+
+unsigned Cadena::toUnsigned()const
+{
+    unsigned numero;
+    sscanf(this->cadenaC, "%u", &numero);
+
+    return numero;
+}
+
+
+
+int Cadena::toInt()const
+{
+    int num;
+
+    sscanf(this->cadenaC, "%d", &num);
+    return num;
+}
+
+
+
+
+Fecha Cadena::toFecha()const
+{
+    return Fecha(*this);
+}
+
+
+
 ///METODOS STATIC///
 int Cadena::cantDigitos(int num)
 {
@@ -181,7 +349,7 @@ int Cadena::cantDigitos(int num)
 ostream& operator <<(ostream& os, const Cadena& cadena)
 {
 
-    os << cadena.cadenaC << endl;
+    os << cadena.cadenaC;
 
     return os;
 }

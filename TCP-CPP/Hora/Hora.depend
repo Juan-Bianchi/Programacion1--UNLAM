@@ -1,3 +1,9 @@
 # depslib dependency file v1.0
 1584205422 source:c:\users\juan\desktop\codificaciones-progra1\progra1\tcp-cpp\hora\main.c
 
+1667139893 source:c:\users\juan\desktop\codificaciones-progra1\progra1\tcp-cpp\hora\hora.cpp
+	"Hora.h"
+
+1667139939 c:\users\juan\desktop\codificaciones-progra1\progra1\tcp-cpp\hora\hora.h
+	<iostream>
+

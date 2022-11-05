@@ -4,6 +4,7 @@
 
 #include "../Cadena/Cadena.h"
 
+
 void funcionQueRecibeCopia(Cadena cCopia);
 
 

@@ -8,9 +8,9 @@ using namespace std;
 class Hora
 {
     public:
-        Hora();
+        inline Hora(): segRel(1){};
         Hora(int seg, int minut, int horas);
-        Hora(Hora& hor);
+        inline Hora(Hora& hor): segRel(hor.segRel){};
 
 
         void setHoraRelativa(int seg, int minut, int horas);

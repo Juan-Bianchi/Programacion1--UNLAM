@@ -7,6 +7,8 @@
 
 #include <iostream>
 
+class Cadena;
+
 using namespace std;
 
 
@@ -29,6 +31,7 @@ class Fecha
     public:
         Fecha();
         Fecha(int dia, int mes, int anio);
+        Fecha(const Cadena& cad);
 
         Fecha sumarDias(int dias) const;
         Fecha restarDias(int dias);
@@ -38,6 +41,7 @@ class Fecha
         void getDma(int& dia, int& mes, int& anio)const;
         void setDma(int dia, int mes, int anio);
 
+        static Fecha& getHoy();
 
         Fecha operator +(int dias) const;
         Fecha& operator += (int dias);
@@ -49,7 +53,7 @@ class Fecha
         Fecha& operator --();                             //Predecremento
         Fecha operator --(int);                           //Posdecremento
 
-        friend ostream& operator <<(ostream& os, Fecha& fecha);
+        friend ostream& operator <<(ostream& os, const Fecha& fecha);
         friend istream& operator >>(istream& is, Fecha& fecha);
 
 };
