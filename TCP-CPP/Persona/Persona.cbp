@@ -20,8 +20,8 @@
 				</Compiler>
 				<Linker>
 					<Add library="bin/Debug/libPersona.a" />
-					<Add library="../Cadena/bin/Debug/libCadena.a" />
 					<Add library="../Fecha/bin/Debug/libFecha.a" />
+					<Add library="../Cadena/bin/Debug/libCadena.a" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -41,6 +41,12 @@
 				</Linker>
 			</Target>
 		</Build>
+		<Unit filename="Alumno.cpp" />
+		<Unit filename="Alumno.h" />
+		<Unit filename="AlumnoBuilder.cpp" />
+		<Unit filename="AlumnoBuilder.h" />
+		<Unit filename="AlumnoException.cpp" />
+		<Unit filename="AlumnoException.h" />
 		<Unit filename="Persona.cpp" />
 		<Unit filename="Persona.h" />
 		<Unit filename="PersonaBuilder.cpp" />

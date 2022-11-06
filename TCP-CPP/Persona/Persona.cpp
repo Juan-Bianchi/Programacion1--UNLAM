@@ -10,7 +10,7 @@ Persona::Persona()
 :dni (0)
 {}
 
-Persona::Persona(unsigned dni, Cadena& apellido, Cadena& nombre, Fecha& fechaNacimiento)
+Persona::Persona(unsigned dni, const Cadena& apellido, const Cadena& nombre, const Fecha& fechaNacimiento)
 :dni(dni), apellido(apellido), nombre(nombre), fechaNacimiento(fechaNacimiento)
 {}
 
@@ -46,16 +46,19 @@ ostream& operator <<(ostream& os, Persona& persona)
 
 istream& operator >>(istream& is, Persona& persona)
 {
-    Cadena linea;
+    char campo[501];
 
-    is >> linea;
+    is.getline(campo, 501, '\t');
+    persona.dni = Persona::validaDni(Cadena((const char*)campo).toUnsigned());
 
-    vector<Cadena> campos = linea.split('\t');
+    is.getline(campo, 501, '\t');
+    persona.apellido = Persona::validaApellido(Cadena((const char*)campo));
 
-    persona.dni = Persona::validaDni(campos[0].toUnsigned());
-    persona.apellido = Persona::validaApellido(campos[1]);
-    persona.nombre = Persona::validaNombre(campos[2]);
-    persona.fechaNacimiento = campos[3].toFecha();
+    is.getline(campo, 501, '\t');
+    persona.nombre = Persona::validaNombre(Cadena((const char*)campo));
+
+    is.getline(campo, 501, '\t');
+    persona.fechaNacimiento = (Cadena((const char*)campo).toFecha());
 
     return is;
 }

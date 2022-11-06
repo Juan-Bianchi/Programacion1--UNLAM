@@ -1,0 +1,3 @@
+30475902	ARAUJO	Agustin	1/12/1983	Ingeniería En Informática	1/3/2020	8.5	21
+30475902	RODRÍGUEZ	Puma	1/12/1983	Ingeniería En Informática	1/3/2020	8.5	21
+30475902	DE LUCA	Mariana	1/12/1983	Ingeniería En Informática	1/3/2020	8.5	21

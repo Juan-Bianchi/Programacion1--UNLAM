@@ -4,7 +4,6 @@
 #include "../Cadena/Cadena.h"
 #include "../Fecha/Fecha.h"
 #include "Persona.h"
-#include <iostream>
 
 
 class PersonaBuilder
@@ -22,7 +21,7 @@ class PersonaBuilder
 
         friend ostream& operator <<(ostream& os, Persona& persona);
 
-    private:
+    protected:
         unsigned dni;
         Cadena apellido;
         Cadena nombre;

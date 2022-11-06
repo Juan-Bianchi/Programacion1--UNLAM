@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1667777933 source:c:\users\juan\desktop\codificaciones-progra1\progra1\tcp-cpp\testfigura\main.cpp
+	<iostream>
+	"../Figura/Cuadrado.h"
+	"../Figura/Circulo.h"
+
+1667777633 c:\users\juan\desktop\codificaciones-progra1\progra1\tcp-cpp\figura\cuadrado.h
+	"Figura.h"
+
+1667777633 c:\users\juan\desktop\codificaciones-progra1\progra1\tcp-cpp\figura\figura.h
+
+1667777633 c:\users\juan\desktop\codificaciones-progra1\progra1\tcp-cpp\figura\circulo.h
+	"Figura.h"
+

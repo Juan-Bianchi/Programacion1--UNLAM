@@ -18,8 +18,8 @@ class Fecha
         int diaRel;
 
         static int cantDM[13];
-        static int vecDiaAcum[13];
-        static int vecDiaAcumBis[13];
+        static int vecDiaAcum[14];
+        static int vecDiaAcumBis[14];
 
 
         inline static bool esBisiesto(int anio){return anio % 400 == 0 || (anio % 4 == 0 && anio % 100 != 0);};     //el inline no es necesario
