@@ -2,7 +2,7 @@
 #include <memory.h>
 
 
-NodoA* crearNodo(const void* elem, size_t tamElem)
+NodoA* crearNodoA(const void* elem, size_t tamElem)
 {
     NodoA* nue = (NodoA*)malloc(sizeof(NodoA));
     void* elemNue = malloc(tamElem);
@@ -21,4 +21,12 @@ NodoA* crearNodo(const void* elem, size_t tamElem)
     nue->hDer = NULL;
 
     return nue;
+}
+
+
+void destruirNodoA(NodoA* nae, void* elem, size_t tamElem)
+{
+    memcpy(elem, nae->elem, min(tamElem, nae->tamElem));
+    free(nae->elem);
+    free(nae);
 }
