@@ -2,12 +2,12 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="Nodo" />
+		<Option title="TDAListaDoblementeEnlazadaDinamica" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/Nodo" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Debug/TDAListaDoblementeEnlazadaDinamica" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="" />
 				<Option object_output="obj/Debug/" />
 				<Option type="2" />
@@ -19,7 +19,7 @@
 				</Compiler>
 			</Target>
 			<Target title="Release">
-				<Option output="bin/Release/Nodo" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Release/TDAListaDoblementeEnlazadaDinamica" prefix_auto="1" extension_auto="1" />
 				<Option working_dir="" />
 				<Option object_output="obj/Release/" />
 				<Option type="2" />
@@ -34,18 +34,10 @@
 				</Linker>
 			</Target>
 		</Build>
-		<Unit filename="Nodo.c">
+		<Unit filename="TDAListaDoblementeEnlazadaDinamica.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="Nodo.h" />
-		<Unit filename="NodoA.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="NodoA.h" />
-		<Unit filename="NodoD.c">
-			<Option compilerVar="CC" />
-		</Unit>
-		<Unit filename="NodoD.h" />
+		<Unit filename="TDAListaDoblementeEnlazadaDinamica.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>

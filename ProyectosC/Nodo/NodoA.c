@@ -1,4 +1,5 @@
 #include "NodoA.h"
+#include <memory.h>
 
 
 NodoA* crearNodo(const void* elem, size_t tamElem)
@@ -16,7 +17,8 @@ NodoA* crearNodo(const void* elem, size_t tamElem)
     memcpy(elemNue, elem, tamElem);
     nue->elem = elemNue;
     nue->tamElem = tamElem;
-    nue->sig = NULL;
+    nue->hIzq = NULL;
+    nue->hDer = NULL;
 
     return nue;
 }

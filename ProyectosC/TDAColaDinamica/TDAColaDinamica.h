@@ -2,6 +2,7 @@
 #define TDACOLADINAMICA_H
 
 #define min(a,b)    ((a)<(b)?(a):(b))
+
 #include <stdlib.h>
 #include <stdbool.h>
 

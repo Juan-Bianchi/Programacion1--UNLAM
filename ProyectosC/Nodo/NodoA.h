@@ -1,6 +1,8 @@
 #ifndef NODOA_H
 #define NODOA_H
 
+#include <stdlib.h>
+
 
 typedef struct sNodoA
 {

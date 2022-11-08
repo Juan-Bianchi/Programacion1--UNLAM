@@ -5,9 +5,15 @@
 
 #ifdef TDA_COLA_IMPLEMENTACION_ESTATICA
     #include "../TDAColaEstatica/TDAColaEstatica.h"
-#else
+#endif // TDA_COLA_IMPLEMENTACION_ESTATICA
+
+#ifdef TDA_COLA_IMPLEMENTACION_DINAMICA
     #include "../TDAColaDinamica/TDAColaDinamica.h"
 #endif // TDA_COLA_IMPLEMENTACION_ESTATICA
+
+#ifdef TDA_COLA_CIRCULAR_IMPLEMENTACION_DINAMICA
+    #include "../TDAColaCircularDinamica/ColaCircularDinamica.h"
+#endif // TDA_COLA_CIRCULAR_IMPLEMENTACION_DINAMICA
 
 #include <stdlib.h>
 

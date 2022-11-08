@@ -5,9 +5,15 @@
 
 #ifdef TDA_PILA_IMPLEMENTACION_ESTATICA
     #include "../TDAPilaEstatica/PilaEstatica.h"
-#else
+#endif // TDA_PILA_IMPLEMENTACION_ESTATICA
+
+#ifdef TDA_PILA_IMPLEMENTACION_DINAMICA
     #include "../TDAPilaDinamica/PilaDinamica.h"
 #endif // TDA_PILA_IMPLEMENTACION_ESTATICA*/
+
+#ifdef TDA_PILA_CIRCULAR_IMPLEMENTACION_DINAMICA
+    #include "../TDAPilaCircularDinamica/TDAPilaCircularDinamica.h"
+#endif // TDA_PILA_CIRCULAR_IMPLEMENTACION_DINAMICA
 
 void crearPila(Pila* pila);
 bool apilar(Pila* pila, const void* elem, size_t tamElem);
