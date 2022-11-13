@@ -360,3 +360,32 @@ void ordenarListaInsercion(Lista* pl, Cmp cmp)
         listOrd = nodoOrig;
     }
 }
+
+
+void vaciarLista(Lista* pl)
+{
+    NodoD* nae = *pl;
+
+    while(nae)
+    {
+        while(nae->ant)
+            nae = nae->ant;
+
+        if(nae->sig)
+            nae->sig->ant = nae->ant;
+
+        if(nae == *pl)
+        {
+            if(nae->sig)
+                *pl = nae->sig;
+            else
+                *pl = nae->ant;
+        }
+
+        free(nae->elem);
+        free(nae);
+
+        nae = nae->sig;
+    }
+
+}

@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1584205420 source:c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tp4\testtp4-ej1\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1668205970 source:c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tp4\testtp4-ej1\arbol.c
+	"Arbol.h"
+	<string.h>
+
+1668207735 c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tp4\testtp4-ej1\arbol.h
+	<stdlib.h>
+	<stdbool.h>
+

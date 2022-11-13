@@ -9,10 +9,11 @@
 #define DUPLICADO 2
 
 
-int typedef (*Cmp)(const void* e1, const void* e2);
-void typedef (*Mostrar)(const void* elem);
-void typedef (*Actualizar)(void* actualizado, const void* actualizador);
-void typedef (*Accion)(void* elem, void* datosAccion);
+typedef int (*Cmp)(const void* e1, const void* e2);
+typedef void (*Mostrar)(const void* elem);
+typedef void (*Actualizar)(void* actualizado, const void* actualizador);
+typedef void (*Accion)(void* elem, void* datosAccion);
+typedef void (*MostrarElemArbol)(const void* elem, int nivel);
 
 typedef NodoA* Arbol;
 

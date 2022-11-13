@@ -1,12 +1,30 @@
-#ifndef TDAARBOL_H
-#define TDAARBOL_H
+#ifndef ARBOL_H
+#define ARBOL_H
 
-#define TDA_ARBOL_IMPL_DINAMICA
+#define min(a,b)    ((a)<(b)?(a):(b))
+#define max(a,b)    ((a)>(b)?(a):(b))
+#define TODO_OK 0
+#define SIN_MEM 1
+#define DUPLICADO 2
 
-#ifdef TDA_ARBOL_IMPL_DINAMICA
-    #include "../TDAArbolDinamica/TDAArbolDinamica.h"
+#include <stdlib.h>
+#include <stdbool.h>
 
-#endif // TDA_ARBOL_IMPL_DINAMICA
+
+typedef struct sNodoA
+{
+    void* elem;
+    size_t tamElem;
+    struct sNodoA* hIzq;
+    struct sNodoA* hDer;
+} NodoA;
+
+typedef NodoA* Arbol;
+
+typedef int (*Cmp)(const void* e1, const void* e2);
+typedef void (*Actualizar)(void* actualizado, const void* actualizador);
+typedef void (*Accion)(void* elem, void* datosAccion);
+typedef void (*MostrarElemArbol)(const void* elem, int nivel);
 
 
 void crearArbol(Arbol* pa);
@@ -29,5 +47,4 @@ int cargarArbolDesdeArchivoOrdenado(Arbol* pa, const char* nombreArchivo, size_t
 void graficarArbol(const Arbol* pa, MostrarElemArbol mostrar);
 
 
-
-#endif // TDAARBOL_H
+#endif // ARBOL_H

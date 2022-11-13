@@ -1,9 +1,10 @@
 # depslib dependency file v1.0
-1667876415 source:c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tdaarboldinamica\tdaarboldinamica.c
+1668298644 source:c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tdaarboldinamica\tdaarboldinamica.c
 	"TDAArbolDinamica.h"
 	<memory.h>
+	<stdio.h>
 
-1667876504 c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tdaarboldinamica\tdaarboldinamica.h
+1668271841 c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tdaarboldinamica\tdaarboldinamica.h
 	"../Nodo/NodoA.h"
 	<stdbool.h>
 
