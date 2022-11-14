@@ -218,7 +218,7 @@ bool esArbolBalanceado(const Arbol* pa)
 
     int cnc = (1 << (altura - 1))- 1;
 
-    int cnr = contarElemArbolHastaNivel(pa, altura-1);
+    int cnr = contarElemArbolHastaNivel(pa, altura-2);
 
     return cnc == cnr;
 }
@@ -316,6 +316,8 @@ Arbol* menorDeArbol(Arbol* pa)
 int cargarArbolDesdeArchivoOrdRec(FILE* arch, Arbol* pa, size_t tamElem, Cmp cmp, int li, int ls, Actualizar actualizar)
 {
     void* elem = malloc(tamElem);
+    if(!elem)
+        return SIN_MEM;
 
     if(li > ls)
       return TODO_OK;
@@ -328,9 +330,8 @@ int cargarArbolDesdeArchivoOrdRec(FILE* arch, Arbol* pa, size_t tamElem, Cmp cmp
     insertarEnArbol(pa, elem, tamElem, cmp, actualizar);
     free(elem);
 
-    cargarArbolDesdeArchivoOrdRec(arch, pa, tamElem, cmp, li, m-1, actualizar);
-
-    return cargarArbolDesdeArchivoOrdRec(arch, pa, tamElem, cmp, m+1, ls, actualizar);
+    return cargarArbolDesdeArchivoOrdRec(arch, pa, tamElem, cmp, li, m-1, actualizar)+
+           cargarArbolDesdeArchivoOrdRec(arch, pa, tamElem, cmp, m+1, ls, actualizar);
 }
 
 

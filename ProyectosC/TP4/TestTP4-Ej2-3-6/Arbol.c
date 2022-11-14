@@ -1,15 +1,15 @@
 #include "Arbol.h"
-#include <string.h>
+#include <memory.h>
 #include <stdio.h>
+
 
 Arbol* mayorArbol(Arbol* pa);
 Arbol* menorArbol(Arbol* pa);
 NodoA* crearNodoA(const void* elem, size_t tamElem);
-void eliminarNodoA(Arbol* pnae);
 Arbol* buscarNodoA(Arbol* pa, void* elem, Cmp cmp);
+void eliminarNodoA(Arbol* pa);
 int cargarArbolDesdeArchivoOrdenadoRec(FILE* arch, Arbol* pa, size_t tamReg, Cmp cmp, int li, int ls, Actualizar actualizar);
 void graficarArbolRec(const Arbol* pa, MostrarElemArbol mostrar, int nivel);
-
 
 
 void crearArbol(Arbol* pa)
@@ -25,6 +25,7 @@ int vaciarArbol(Arbol* pa)
         return 0;
 
     int cne = 0;
+
     cne += vaciarArbol(&(*pa)->hIzq);
     cne += vaciarArbol(&(*pa)->hDer);
 
@@ -32,7 +33,7 @@ int vaciarArbol(Arbol* pa)
     free(*pa);
     *pa = NULL;
 
-    return  cne + 1;
+    return cne + 1;
 }
 
 
@@ -42,7 +43,7 @@ int insertarEnArbol(Arbol* pa, const void* elem, size_t tamElem, Cmp cmp, Actual
     if(!*pa)
     {
         *pa = crearNodoA(elem, tamElem);
-        if(!*pa)
+        if(!pa)
             return SIN_MEM;
 
         return TODO_OK;
@@ -83,7 +84,6 @@ bool buscarEnArbol(const Arbol* pa, void* elem, size_t tamElem, Cmp cmp)
 bool eliminarDeArbol(Arbol* pa, void* elem, size_t tamElem, Cmp cmp)
 {
     Arbol* pnae = buscarNodoA(pa, elem, cmp);
-
     if(!pnae)
         return false;
 
@@ -91,6 +91,7 @@ bool eliminarDeArbol(Arbol* pa, void* elem, size_t tamElem, Cmp cmp)
     free((*pnae)->elem);
 
     eliminarNodoA(pnae);
+
     return true;
 }
 
@@ -150,7 +151,7 @@ int contarElemArbol(const Arbol* pa)
     if(!*pa)
         return 0;
 
-    return 1 + contarElemArbol(&(*pa)->hIzq) + contarElemArbol(&(*pa)->hIzq);
+    return 1 + contarElemArbol(&(*pa)->hIzq) + contarElemArbol(&(*pa)->hDer);
 }
 
 
@@ -181,6 +182,7 @@ int contarElemArbolHastaNivel(const Arbol* pa, int nivel)
 
 
 
+
 int podarArbol(Arbol* pa, int nivel)
 {
     if(!*pa)
@@ -189,7 +191,7 @@ int podarArbol(Arbol* pa, int nivel)
     if(nivel == 0)
         return vaciarArbol(pa);
 
-    return 1 + podarArbol(&(*pa)->hIzq, nivel-1) + podarArbol(&(*pa)->hDer, nivel-1);
+    return podarArbol(&(*pa)->hIzq, nivel - 1) + podarArbol(&(*pa)->hDer, nivel - 1);
 }
 
 
@@ -198,6 +200,7 @@ bool esArbolCompleto(const Arbol* pa)
 {
     int altura = alturaArbol(pa);
     int cnc = (1 << altura) - 1;
+
     int cnr = contarElemArbol(pa);
 
     return cnc == cnr;
@@ -208,15 +211,14 @@ bool esArbolCompleto(const Arbol* pa)
 bool esArbolBalanceado(const Arbol* pa)
 {
     int altura = alturaArbol(pa);
-
     if(altura < 2)
         return true;
 
-    int cnc = (1 << (altura-1)) - 1;
+    int cnc = (1 << (altura - 1)) - 1;
 
-    int cnr = contarElemArbolHastaNivel(pa, altura-2);
+    int cnr = contarElemArbolHastaNivel(pa, altura - 2);
 
-    return cnr == cnc;
+    return cnc == cnr;
 }
 
 
@@ -229,7 +231,7 @@ bool esArbolAVL(const Arbol* pa)
     int hi = alturaArbol(&(*pa)->hIzq);
     int hd = alturaArbol(&(*pa)->hDer);
 
-    if(abs(hi-hd) > 1)
+    if(abs(hi - hd) > 1)
         return false;
 
     return esArbolAVL(&(*pa)->hIzq) && esArbolAVL(&(*pa)->hDer);
@@ -243,10 +245,10 @@ int cargarArbolDesdeArchivoOrdenado(Arbol* pa, const char* nombreArchivo, size_t
     if(!arch)
         return SIN_MEM;
 
-    fseek(arch, 0L, SEEK_SET);
+    fseek(arch, 0L, SEEK_END);
     int cantReg = ftell(arch) / tamReg;
 
-    int ret = cargarArbolDesdeArchivoOrdenadoRec(arch, pa, tamReg, cmp, 0, cantReg, actualizar);
+    int ret = cargarArbolDesdeArchivoOrdenadoRec(arch, pa, tamReg, cmp, 0, cantReg-1, actualizar);
 
     return ret;
 }
@@ -259,13 +261,14 @@ void graficarArbol(const Arbol* pa, MostrarElemArbol mostrar)
 }
 
 
-void mostrarHojas(const Arbol* pa, MostrarElemArbol mostrar)
+
+void mostrarHojas(const Arbol* pa, Mostrar mostrar)
 {
     if(!*pa)
         return;
 
     if(!(*pa)->hIzq && !(*pa)->hDer)
-        mostrar((*pa)->elem, 0);
+        mostrar((*pa)->elem);
 
     mostrarHojas(&(*pa)->hIzq, mostrar);
     mostrarHojas(&(*pa)->hDer, mostrar);
@@ -273,21 +276,22 @@ void mostrarHojas(const Arbol* pa, MostrarElemArbol mostrar)
 
 
 
-void mostrarNodosNoHojas(const Arbol* pa, MostrarElemArbol mostrar)
+void mostrarNodosNoHojas(const Arbol* pa, Mostrar mostrar)
 {
     if(!*pa)
         return;
 
-    if(!(*pa)->hIzq && !(*pa)->hDer)
-        return;
+    if((*pa)->hIzq && (*pa)->hDer)
+        mostrar((*pa)->elem);
 
-    mostrar((*pa)->elem, 0);
     mostrarNodosNoHojas(&(*pa)->hIzq, mostrar);
     mostrarNodosNoHojas(&(*pa)->hDer, mostrar);
 }
 
 
-///////////////////UTILITARIAS///////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 NodoA* crearNodoA(const void* elem, size_t tamElem)
 {
@@ -311,20 +315,17 @@ NodoA* crearNodoA(const void* elem, size_t tamElem)
 }
 
 
-
 Arbol* buscarNodoA(Arbol* pa, void* elem, Cmp cmp)
 {
     if(!*pa)
         return NULL;
 
     int comp = cmp(elem, (*pa)->elem);
-
     if(comp == 0)
         return pa;
 
     return buscarNodoA((comp < 0)? &(*pa)->hIzq: &(*pa)->hDer, elem, cmp);
 }
-
 
 
 void eliminarNodoA(Arbol* pnae)
@@ -333,18 +334,19 @@ void eliminarNodoA(Arbol* pnae)
     {
         free(*pnae);
         *pnae = NULL;
+
         return;
     }
 
     int hi = alturaArbol(&(*pnae)->hIzq);
     int hd = alturaArbol(&(*pnae)->hDer);
 
-    Arbol* pnreem = (hi > hd)? mayorArbol(&(*pnae)->hIzq): menorArbol(&(*pnae)->hDer);
+    Arbol* pnreempl = (hi > hd)? mayorArbol(&(*pnae)->hIzq): menorArbol(&(*pnae)->hDer);
 
-    (*pnae)->elem = (*pnreem)->elem;
-    (*pnae)->tamElem = (*pnreem)->tamElem;
+    (*pnae)->elem = (*pnreempl)->elem;
+    (*pnae)->tamElem = (*pnreempl)->tamElem;
 
-    eliminarNodoA(pnreem);
+    eliminarNodoA(pnreempl);
 }
 
 
@@ -360,36 +362,34 @@ Arbol* mayorArbol(Arbol* pa)
 
 Arbol* menorArbol(Arbol* pa)
 {
-    if(!&(*pa)->hIzq)
+    if(!(*pa)->hIzq)
         return pa;
 
     return menorArbol(&(*pa)->hIzq);
 }
 
 
+
 int cargarArbolDesdeArchivoOrdenadoRec(FILE* arch, Arbol* pa, size_t tamReg, Cmp cmp, int li, int ls, Actualizar actualizar)
 {
     void* elem = malloc(tamReg);
-
     if(!elem)
         return SIN_MEM;
 
     if(li > ls)
         return TODO_OK;
 
-    int m = (ls + li) /2;
+    int m = (li + ls) / 2;
 
     fseek(arch, tamReg * m, SEEK_SET);
     fread(elem, tamReg, 1, arch);
-
     insertarEnArbol(pa, elem, tamReg, cmp, actualizar);
 
     free(elem);
 
-    cargarArbolDesdeArchivoOrdenadoRec(arch, &(*pa)->hIzq, tamReg, cmp, li, m-1, actualizar);
-    return cargarArbolDesdeArchivoOrdenadoRec(arch, &(*pa)->hDer, tamReg, cmp, m+1, ls, actualizar);
+    return cargarArbolDesdeArchivoOrdenadoRec(arch, pa, tamReg, cmp, li, m-1, actualizar) +
+           cargarArbolDesdeArchivoOrdenadoRec(arch, pa, tamReg, cmp, m+1, ls, actualizar);
 }
-
 
 
 void graficarArbolRec(const Arbol* pa, MostrarElemArbol mostrar, int nivel)

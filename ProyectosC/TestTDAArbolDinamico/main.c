@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define CANT_VEC 14
-#define CANT_VEC2 15
-#define CANT_VEC3 10
+#define CANT_VEC 15
+#define CANT_VEC2 16
+#define CANT_VEC3 12
 
 
 #define TDA_ARBOL_IMPL_DINAMICA
@@ -15,11 +15,12 @@ int compararEntero(const void* e1, const void* e2);
 void mostrarInt(const void* ar, int nivel);
 
 
+
 int main()
 {
-    int vec1 [CANT_VEC] = {10, 5, 20, 2, 7,/* 15,*/ 30, 1, 3, 6, 8, 12, 18, 25, 50};
-    int vecAVL [CANT_VEC2] = {10, 5, 2, 1, 7,/* 6, */8, 9, 20, 15, 12, 18, 30, 25, 50, 100};
-    int vecBalanc [CANT_VEC3] = {10, 5, 20, 2, 7, 15,/* 30, */1, 3, 8, 12/*, 25*/};
+    int vec1 [CANT_VEC] = {10, 5, 20, 2, 7, 15, 30, 1, 3, 6, 8, 12, 18, 25, 50};
+    int vecAVL [CANT_VEC2] = {10, 5, 2, 1, 7, 6, 8, 9, 20, 15, 12, 18, 30, 25, 50, 100};
+    int vecBalanc [CANT_VEC3] = {10, 5, 20, 2, 7, 15, 30, 1, 3, 8, 12, 25};
 
     Arbol aCompl, aAVL, aBalanceado;
 
@@ -60,7 +61,7 @@ int main()
 
     graficarArbol(&aBalanceado, mostrarInt);
 
-    if(esArbolAVL(&aBalanceado))
+    if(esArbolBalanceado(&aBalanceado))
         puts("El árbol impreso es Balanceado!!\n");
     else
         puts("El árbol impreso no es Balanceado!!\n");

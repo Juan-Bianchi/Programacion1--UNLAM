@@ -1,0 +1,22 @@
+# depslib dependency file v1.0
+1668382437 source:c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tp4\testtp4-ej2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"Arbol.h"
+	"../../TP1/TP1-TipoFecha/Fecha.h"
+
+1668380476 source:c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tp4\testtp4-ej2\arbol.c
+	"Arbol.h"
+	<memory.h>
+	<stdio.h>
+
+1668371174 c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tp4\testtp4-ej2\arbol.h
+	<stdlib.h>
+	<stdbool.h>
+
+1661297942 c:\users\juan\desktop\codificaciones-progra1\progra1\proyectosc\tp1\tp1-tipofecha\fecha.h
+	<stdio.h>
+	<stdlib.h>
+
