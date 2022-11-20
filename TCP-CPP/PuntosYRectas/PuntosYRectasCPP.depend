@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1668452050 source:c:\users\juan\desktop\codificaciones-progra1\parciales\resoluciones\parcial2\2021_07_12_armadoyreparaciones2doparcial_entregable_64bits\puntosyrectascpp\punto.cpp
+	"Punto.h"
+
+1668452189 c:\users\juan\desktop\codificaciones-progra1\parciales\resoluciones\parcial2\2021_07_12_armadoyreparaciones2doparcial_entregable_64bits\puntosyrectascpp\punto.h
+	<iostream>
+
+1668452262 source:c:\users\juan\desktop\codificaciones-progra1\parciales\resoluciones\parcial2\2021_07_12_armadoyreparaciones2doparcial_entregable_64bits\puntosyrectascpp\recta.cpp
+	"Recta.h"
+	<math.h>
+
+1668452189 c:\users\juan\desktop\codificaciones-progra1\parciales\resoluciones\parcial2\2021_07_12_armadoyreparaciones2doparcial_entregable_64bits\puntosyrectascpp\recta.h
+	"Punto.h"
+	<iostream>
+
+1668451120 source:c:\users\juan\desktop\codificaciones-progra1\parciales\resoluciones\parcial2\2021_07_12_armadoyreparaciones2doparcial_entregable_64bits\puntosyrectascpp\main.cpp
+	<iostream>
+	"Recta.h"
+

@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1668460414 source:c:\users\juan\desktop\codificaciones-progra1\parciales\resoluciones\parcial2\2021-11-30\racionalcpp\racional.cpp
+	"Racional.h"
+
+1668460040 c:\users\juan\desktop\codificaciones-progra1\parciales\resoluciones\parcial2\2021-11-30\racionalcpp\racional.h
+	<iostream>
+
+1668460152 source:c:\users\juan\desktop\codificaciones-progra1\parciales\resoluciones\parcial2\2021-11-30\racionalcpp\main.cpp
+	<iostream>
+	"Racional.h"
+

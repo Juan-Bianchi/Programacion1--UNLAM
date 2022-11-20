@@ -75,7 +75,7 @@ bool eliminarDeListaOrd(Lista* pl, void* elem, size_t tamElem, Cmp cmp)
         return false;
 
     while(nae->ant && cmp(elem, nae->elem) < 0)
-            nae = nae->ant;
+        nae = nae->ant;
 
     while(nae->sig && cmp(elem, nae->elem) > 0)
         nae = nae->sig;
